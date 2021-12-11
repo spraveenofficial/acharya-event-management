@@ -1,0 +1,11 @@
+.contribute{
+    background: rgb(33, 33, 33);
+    color: #fff;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+
+}

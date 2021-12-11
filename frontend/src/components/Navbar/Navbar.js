@@ -1,6 +1,7 @@
 import Styles from "./Navbar.module.css"; //
 import { List } from "phosphor-react";
 import { Link } from "react-router-dom";
+import Logo from "../Logo/Logo";
 const Navbar = ({ children }) => {
   return (
     <>
@@ -8,7 +9,7 @@ const Navbar = ({ children }) => {
         <div className={Styles.logo}>
           <h2>
             <Link to="/">
-              <p>Acharya</p>
+              <Logo/>
             </Link>
           </h2>
         </div>

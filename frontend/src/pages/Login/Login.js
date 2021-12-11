@@ -44,6 +44,7 @@ const Login = () => {
           setisLoading(false);
         }else{
           localStorage.setItem('erpToken' , data.token);
+          localStorage.setItem('aliveToken', data.aliveToken)
           setToast(true);
           setisLoading(false);
           setLoginStatus(true);
@@ -79,6 +80,7 @@ const Login = () => {
               width="350px"
               onChange={(e) => setAuid(e.target.value)}
               error={auidError}
+              value={auid.toUpperCase()}
             />
           </>
           <>

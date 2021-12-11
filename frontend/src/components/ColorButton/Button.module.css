@@ -1,0 +1,28 @@
+button {
+    border: none;
+    outline: none;
+    padding: 9px 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    /* background: black; */
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 18px;
+    display: flex;
+    align-items: center !important;
+    /* vertical-align: middle; */
+    width: auto;
+    margin: 10px 0px;
+  }
+  button > *{
+    color: #ffffff !important;
+    margin-left: 5px;
+    align-items: center;
+    /* align-items: center; */
+  }
+  
+  @media (max-width: 768px){
+      button{
+          width: 150px;
+      }
+  }
