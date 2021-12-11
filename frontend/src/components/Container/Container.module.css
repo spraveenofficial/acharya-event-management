@@ -1,0 +1,17 @@
+.container {
+  background: #fff;
+  font-family: inherit !important;
+  /* background-size: cover; */
+  /* background-repeat: no-repeat; */
+  margin: 20px 40px;
+  transition: all 0.3s ease-in-out;
+}
+/* .container:hover{
+  color: red
+} */
+
+@media (max-width: 767px) {
+  .container {
+    margin: 10px 20px;
+  }
+}

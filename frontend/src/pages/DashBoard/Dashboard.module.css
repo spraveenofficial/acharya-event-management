@@ -1,0 +1,5 @@
+@media(max-width: 768px){
+    .navbar h2{
+        font-size: 19px;
+    }
+}
