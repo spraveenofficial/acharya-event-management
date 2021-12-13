@@ -5,7 +5,10 @@ import Button from "../../components/Button/Button";
 import { useState } from "react";
 import axios from "axios";
 import Toast from "../../components/Toast/Toast";
+import { useDispatch } from "react-redux";
+import { setAuth } from "../../store/authSlice";
 const Login = () => {
+  const dispatch = useDispatch();
   const [isLoading, setisLoading] = useState(false);
   const [auid, setAuid] = useState("");
   const [password, setPassword] = useState("");
@@ -39,12 +42,13 @@ const Login = () => {
       .then((res) => {
         const data = res.data;
         console.log(data);
-        if(!data.success) {
+        if (!data.success) {
           setToast(true);
           setisLoading(false);
-        }else{
-          localStorage.setItem('erpToken' , data.token);
-          localStorage.setItem('aliveToken', data.aliveToken)
+        } else {
+          dispatch(setAuth({ isAuth: true }));
+          localStorage.setItem("erpToken", data.token);
+          localStorage.setItem("aliveToken", data.aliveToken);
           setToast(true);
           setisLoading(false);
           setLoginStatus(true);

@@ -4,6 +4,9 @@ import Login from "./pages/Login/Login";
 import Profile from "./pages/Profile/Profile";
 import Home from "./pages/Home/Home";
 import Dashboard from "./pages/DashBoard/Dashboard";
+import { useSelector } from "react-redux";
+import { isAuth } from "./store/authSlice";
+import {Navigate} from "react-router-dom";
 function App() {
   return (
     <Router>

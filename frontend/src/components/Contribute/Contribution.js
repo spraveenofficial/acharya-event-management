@@ -8,7 +8,7 @@ const Contribute = () => {
   };
   return (
     <div className={Styles.contribute}>
-      <h1>Wants to Contribute?</h1>
+      <h1>Wants to Contribute? <span>🚀</span></h1>
       <p>Let's grow this Open Source Project by giving some efforts.</p>
       <Button
         color="rgb(46, 110, 223)"

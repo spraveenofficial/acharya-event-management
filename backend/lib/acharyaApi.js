@@ -75,6 +75,35 @@ class Acharya {
         });
       });
   }
+  async Attendence(req, res){
+    await axios({
+      url: process.env.ERP_ATTENDANCE,
+      method: "POST",
+      headers: {
+        token: req.headers.token,
+      },
+    })
+      .then((response) => {
+        if (response.data.success === false) {
+          return res.status(201).json({
+            success: false,
+            message: "Unable to retreive Student Information",
+          });
+        } else if (response.data.success === true) {
+          return res.status(200).json({
+            success: true,
+            message: "User data retreive successfully",
+            data: response.data,
+          });
+        }
+      })
+      .catch((err) => {
+        return res.status(500).json({
+          success: false,
+          message: "Unable to get student information.",
+        });
+      });
+  }
 }
 
 module.exports = new Acharya();
