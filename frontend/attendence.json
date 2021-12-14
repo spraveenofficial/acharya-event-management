@@ -1,0 +1,80 @@
+{
+    "success": true,
+    "data": [
+        {
+            "subject_name": "Design and Analysis of Algorithms Lab",
+            "attendance": 100,
+            "subject_code": "15CSL47",
+            "subject_name_short": "DAAL",
+            "present": "2",
+            "total": "2"
+        },
+        {
+            "subject_name": "Artificial Intelligence",
+            "attendance": 0,
+            "subject_code": "15CS562",
+            "subject_name_short": "AI",
+            "present": "0",
+            "total": "2"
+        },
+        {
+            "subject_name": "THEORY OF COMPUTATION",
+            "attendance": 52.38,
+            "subject_code": "SB7120",
+            "subject_name_short": "TOC",
+            "present": "11",
+            "total": "21"
+        },
+        {
+            "subject_name": "OOPS WITH JAVA LAB",
+            "attendance": 100,
+            "subject_code": "15CS46P",
+            "subject_name_short": "OOPSJAVALAB",
+            "present": "2",
+            "total": "2"
+        },
+        {
+            "subject_name": "BCA_JAVA PROGRAMMING",
+            "attendance": 33.33,
+            "subject_code": "SB7118",
+            "subject_name_short": "BCA_JAVA",
+            "present": "6",
+            "total": "18"
+        },
+        {
+            "subject_name": "BCA_DATA COMMUNICATION AND NETWORKS",
+            "attendance": 50,
+            "subject_code": "SB7115",
+            "subject_name_short": "BCA_DCN",
+            "present": "12",
+            "total": "24"
+        },
+        {
+            "subject_name": "Banking and Finance",
+            "attendance": 77.78,
+            "subject_code": "ASDBFNC",
+            "subject_name_short": "ASD B & F ",
+            "present": "7",
+            "total": "9"
+        },
+        {
+            "subject_name": "Analysis and Design of   Algorithm",
+            "attendance": 53.13,
+            "subject_code": "BCA504T",
+            "subject_name_short": "ADA",
+            "present": "17",
+            "total": "32"
+        },
+        {
+            "subject_name": "Artificial Intelligence",
+            "attendance": 40,
+            "subject_code": "BCA502T",
+            "subject_name_short": "AI",
+            "present": "10",
+            "total": "25"
+        }
+    ],
+    "current_year": 3,
+    "current_sem": 5,
+    "Average_attendance": 56.291111111111
+}

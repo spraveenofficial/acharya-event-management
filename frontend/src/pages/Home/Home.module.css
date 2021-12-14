@@ -1,0 +1,17 @@
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  /* background: red; */
+}
+
+.eventtitle {
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+}
+
+@media (max-width: 767px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}

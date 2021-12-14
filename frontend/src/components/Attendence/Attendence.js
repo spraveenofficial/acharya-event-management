@@ -1,16 +1,22 @@
 import Styles from "./Attendence.module.css";
 import { TrendUp, Check } from "phosphor-react";
 
-const Attendence = () => {
+const Attendence = ({ percentage }) => {
   return (
     <div className={Styles.attendence}>
       <div className={Styles.content}>
-        <p>Praveen Kumar Singh <span><Check weight="bold" size={20} /></span></p>
+        <p>
+          Praveen Kumar Singh{" "}
+          <img
+            src="https://i.ya-webdesign.com/images/instagram-verified-badge-png-1.png"
+            alt=""
+          />
+        </p>
         <p>BCA</p>
       </div>
       <div className={Styles.percentage}>
-        <TrendUp scale={50} size={48} />
-        <h2>52%</h2>
+        <TrendUp color="green" weight="bold" size={48} />
+        <h2 style={{ color: "green" }}>50%</h2>
       </div>
     </div>
   );

@@ -1,45 +1,55 @@
-.attendence{
-    background: rgb(33, 33, 33);
-    padding:15px;
-    width: 300px;
-    color: #fff;
-    border-radius: 10px;
-    height: 80px;
-    margin: 10px 0px;
-    display: flex;
+.attendence {
+  background: rgb(33, 33, 33);
+  padding: 15px;
+  width: 300px;
+  color: #fff;
+  border-radius: 10px;
+  height: 80px;
+  margin: 10px 0px;
+  display: flex;
 }
 
-.content{
-    width: 70%;
-    /* background: blue; */
-    height: 100%;
-    align-items: center;
+.content {
+  width: 70%;
+  /* background: blue; */
+  height: 100%;
+  align-items: center;
 }
 
-.content span{
-    background: blue;
-    width: fit-content;
-    /* height: 10px; */
-    content: "";
-    border-radius: 20px;
-    /* align-items: center; */
-    text-align: center !important;
-    overflow: hidden;
-    /* display: flex; */
-    /* justify-content: center; */
-}
-.content > *{
-    margin: 0px 0px;
-    color: #fff !important;
+.content img {
+  width: 20px;
+  vertical-align: text-bottom;
 }
 
+.content p {
+  align-items: center;
+  /* text-align: center; */
+  /* justify-content: center; */
+  /* align-items: center; */
+}
+.content span {
+  background: blue;
+  width: fit-content;
+  /* height: 10px; */
+  content: "";
+  border-radius: 20px;
+  /* align-items: center; */
+  text-align: center !important;
+  overflow: hidden;
+  /* display: flex; */
+  /* justify-content: center; */
+}
+.content > * {
+  margin: 0px 0px;
+  color: #fff !important;
+}
 
-.percentage{
-    text-align: center;
-    align-items: center;
-    /* background: red; */
-    width: 30%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+.percentage {
+  text-align: center;
+  align-items: center;
+  /* background: red; */
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }

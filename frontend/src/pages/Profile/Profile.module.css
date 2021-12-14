@@ -1,0 +1,44 @@
+.profile{
+    background: rgb(246, 248, 255);
+    height: 500px;
+    margin: 0px 200px;
+    padding: 20px 40px;
+    border-radius: 20px;
+}
+.user {
+    width: 350px;
+    /* background: red; */
+    height: 100%;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.name {
+    height: 90px;
+    /* background: blue; */
+    display: flex;
+    /* justify-content: space-evenly; */
+    align-items: center;
+    /* justify-content: center; */
+}
+.username{
+    padding: 0px 10px;
+}
+
+.second{
+    background: yellow;
+    /* width: 350px; */
+    height: 410px;
+    align-items: center;
+    text-align: center;
+}
+@media (max-width: 767px) {
+    .user{
+        width: fit-content;
+    }
+    .profile{
+      margin: 0px 0px;
+      padding: 10px 10px;
+    }
+  }

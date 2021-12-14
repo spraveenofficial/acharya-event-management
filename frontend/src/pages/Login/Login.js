@@ -60,7 +60,11 @@ const Login = () => {
   };
   return (
     <div className={Styles.login}>
-      {toast ? <Toast status={loginStatus} /> : ""}
+      {toast ? (
+        <Toast onClose={(e) => setToast(false)} status={loginStatus} />
+      ) : (
+        ""
+      )}
       <div
         style={{ backgroundImage: `url(${Background})` }}
         className={Styles.left}

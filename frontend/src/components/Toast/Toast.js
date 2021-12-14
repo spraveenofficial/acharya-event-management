@@ -2,7 +2,7 @@ import { Check, X } from "phosphor-react";
 import { useState } from "react";
 import Styles from "./Toast.module.css";
 
-const Toast = ({ message, status }) => {
+const Toast = ({ message, status, onClose }) => {
   const [showToast, setShowToast] = useState(true);
   return (
     <>
@@ -28,7 +28,7 @@ const Toast = ({ message, status }) => {
                 </p>
               </div>
               <div
-                onClick={() => setShowToast(false)}
+                onClick={() => setShowToast(false), onClose}
                 className={Styles.toastclose}
               >
                 <X size={22} />

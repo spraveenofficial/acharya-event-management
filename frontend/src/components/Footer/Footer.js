@@ -40,7 +40,7 @@ const Footer = () => {
             </div>
           </h3>
           <Link to="/developer">
-            <p>Developers</p>
+            <p>Praveen Kumar Singh</p>
           </Link>
           <Link to="/developer">
             <p>Mohit Kumar</p>
