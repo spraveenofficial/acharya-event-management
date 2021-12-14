@@ -6,7 +6,7 @@ import { useState } from "react";
 import axios from "axios";
 import Toast from "../../components/Toast/Toast";
 import { useDispatch } from "react-redux";
-import { setAuth } from "../../store/authSlice";
+import { setAuth, setUser } from "../../store/authSlice";
 const Login = () => {
   const dispatch = useDispatch();
   const [isLoading, setisLoading] = useState(false);
@@ -44,8 +44,10 @@ const Login = () => {
         console.log(data);
         if (!data.success) {
           setToast(true);
+          // setA
           setisLoading(false);
         } else {
+          dispatch(setUser({ user: data.token }));
           dispatch(setAuth({ isAuth: true }));
           localStorage.setItem("erpToken", data.token);
           localStorage.setItem("aliveToken", data.aliveToken);

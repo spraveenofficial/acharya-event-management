@@ -1,5 +1,6 @@
 const axios = require("axios");
 const User = require("../database/model/users");
+const Event = require("../database/model/event")
 const Auth = require("../services/auth");
 
 class Acharya {
@@ -103,6 +104,9 @@ class Acharya {
           message: "Unable to get student information.",
         });
       });
+  }
+  async addEvent(req,res){
+    const {title, category,description,venue,slug,joiningFee,thumbnail, startDate,endsDate,winingPrize} = req.body
   }
 }
 

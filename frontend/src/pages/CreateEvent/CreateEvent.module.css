@@ -1,0 +1,144 @@
+.form {
+  display: flex;
+  width: 100%;
+}
+
+.left {
+  width: 50%;
+  /* background: red; */
+  margin-right: 20px;
+}
+
+.left > div,
+.marginbtn {
+  margin: 0px 30px;
+}
+
+.right {
+  width: 50%;
+}
+.input {
+  width: 640px !important;
+  min-height: 40px;
+  color: black !important;
+}
+.category {
+  display: flex;
+  justify-content: space-between;
+}
+
+.boxmargin {
+  margin-left: 10px !important;
+}
+.description {
+  width: 500px !important;
+  /* background: blue !important; */
+  min-height: 200px;
+  padding-top: -80px !important;
+  position: sticky;
+}
+
+.catrgoryinput {
+  width: 280px !important;
+  min-height: 40px;
+  color: black;
+}
+
+
+@media (max-width: 767px) {
+  .form {
+    flex-direction: column;
+  }
+  .left,
+  .right {
+    width: 100%;
+  }
+  .input,
+  .catrgoryinput {
+    max-width: 95% !important;
+  }
+  .description {
+    max-width: 95% !important;
+  }
+  .left > div,
+  .marginbtn {
+    margin: 0px 0px;
+  }
+  .catrgoryinput {
+    width: 90% !important;
+  }
+  .dateinput{
+    width: 180px !important;
+  }
+  .datesdata{
+    max-width: 95% !important;
+  }
+}
+
+
+/* Date input .dateinput */
+.datesdata{
+  display: flex;
+  /* justify-content: ; */
+}
+.dates{
+  display: flex;
+  margin-right: 10px;
+  flex-direction: column;
+}
+
+:root {
+  --input-border: #8b8a8b;
+  --input-focus-h: 240;
+  --input-focus-s: 100%;
+  --input-focus-l: 42%;
+}
+
+.dateinput {
+  border: none;
+  border: lightgray solid;
+  font-weight: 600;
+  font-family: inherit;
+  padding: 0.45em 0.5em;
+  background-color: #fff;
+  border: 2px solid #8b8a8b;
+  border-radius: 4px;
+  /* margin: 5px 0px; */
+  margin-bottom: 15px;
+  width: 238px;
+  /* display: flex; */
+  justify-content: center;
+}
+.error {
+  color: red;
+}
+
+.dateinput:not(textarea) {
+  line-height: 1;
+  height: 2.1rem;
+}
+
+.dateinput:focus {
+  border-color: hsl(
+    var(--input-focus-h),
+    var(--input-focus-s),
+    var(--input-focus-l)
+  );
+}
+.dateinput:focus {
+  box-shadow: 0 0 0 3px
+    hsla(
+      var(--input-focus-h),
+      var(--input-focus-s),
+      calc(var(--input-focus-l) + 40%),
+      0.8
+    );
+}
+
+.dateinput {
+  transition: 180ms box-shadow ease-in-out;
+}
+
+.dateinput:focus {
+  outline: 3px solid transparent;
+}

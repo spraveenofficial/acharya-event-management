@@ -1,6 +1,6 @@
 import Styles from "./Input.module.css";
 
-const Input = ({ width, name, onChange, error, type }) => {
+const Input = ({ width, name, onChange, error, type, className }) => {
   return (
     <div className={Styles.input}>
       <span className={Styles.error}>
@@ -11,6 +11,7 @@ const Input = ({ width, name, onChange, error, type }) => {
         style={{ width: width }}
         type={type}
         placeholder={name}
+        className={className}
       />
     </div>
   );

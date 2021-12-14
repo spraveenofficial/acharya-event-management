@@ -8,6 +8,7 @@ import Attendence from "./pages/Attendence/Attendence";
 import Classes from "./pages/Classes/Classes";
 import Events from "./pages/Events/Events";
 import About from "./pages/About/About";
+import AddEvent from './pages/CreateEvent/CreateEvent'
 import { useSelector } from "react-redux";
 import { isAuth } from "./store/authSlice";
 import { Navigate } from "react-router-dom";
@@ -23,6 +24,7 @@ function App() {
         <Route path="/classes" element={<Classes />} />
         <Route path="/events" element={<Events />} />
         <Route path="/about" element={<About />} />
+        <Route path="/addevent" element={<AddEvent />} />
       </Routes>
     </Router>
   );

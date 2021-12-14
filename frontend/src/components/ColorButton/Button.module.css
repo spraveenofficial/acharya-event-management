@@ -5,7 +5,7 @@ button {
     border-radius: 10px;
     cursor: pointer;
     /* background: black; */
-    color: #ffffff;
+    color: #ffffff !important;
     font-family: inherit;
     font-size: 18px;
     display: flex;
