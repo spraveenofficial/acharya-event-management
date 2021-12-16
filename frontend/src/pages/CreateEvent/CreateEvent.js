@@ -62,6 +62,15 @@ const CreateEvent = () => {
                   className={Styles.input}
                 />
               </div>
+              <div className={Styles.organiser}>
+                <label>Who is Organizing this Event*</label>
+                <Input
+                  name="Enter Organiser Name"
+                  type="text"
+                  // width="350px"
+                  className={Styles.input}
+                />
+              </div>
             </div>
             <div className={Styles.right}>
               <label>Enter Event Description*</label>
@@ -72,14 +81,20 @@ const CreateEvent = () => {
                 className={Styles.description}
               />
               <div className={Styles.datesdata}>
-              <div className={Styles.dates}>
-                <label>Enter Start Date *</label>
-                <input className={Styles.dateinput} type="date" />
+                <div className={Styles.dates}>
+                  <label>Enter Start Date *</label>
+                  <input className={Styles.dateinput} type="date" />
+                </div>
+                <div className={Styles.dates}>
+                  <label>Enter Ends Date *</label>
+                  <input className={Styles.dateinput} type="date" />
+                </div>
               </div>
-              <div className={Styles.dates}>
-                <label>Enter Ends Date *</label>
-                <input className={Styles.dateinput} type="date" />
-              </div>
+              <div className={Styles.datesdata}>
+                <div className={Styles.dates}>
+                  <label>Enter Event Date *</label>
+                  <input className={Styles.dateinput} type="date" />
+                </div>
               </div>
             </div>
           </div>

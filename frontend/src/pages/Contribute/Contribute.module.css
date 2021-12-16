@@ -1,0 +1,45 @@
+.contribution {
+  display: flex;
+  /* height: 500px; */
+}
+
+.left {
+  /* background: red; */
+  width: 50%;
+  padding: 20px 40px;
+  max-width: 45%;
+}
+
+.right {
+  width: 50%;
+  /* background: red; */
+  padding: 20px 40px;
+  /* max-width: 45%; */
+}
+
+.right p {
+  color: black;
+  margin-top: 12px;
+}
+.lottie {
+  height: 200px;
+}
+.imp p{
+  font-size: 14px;
+}
+
+@media (max-width: 767px) {
+  .contribution {
+    flex-direction: column;
+  }
+  .left {
+    /* overflow: hidden; */
+    width: 100% !important;
+    padding: 0px 0px;
+    max-width: 100%;
+  }
+  .right {
+    width: 100%;
+    padding: 0px 0px;
+  }
+}

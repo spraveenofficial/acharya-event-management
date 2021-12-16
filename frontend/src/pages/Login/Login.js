@@ -7,7 +7,9 @@ import axios from "axios";
 import Toast from "../../components/Toast/Toast";
 import { useDispatch } from "react-redux";
 import { setAuth, setUser } from "../../store/authSlice";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isLoading, setisLoading] = useState(false);
   const [auid, setAuid] = useState("");
@@ -44,16 +46,18 @@ const Login = () => {
         console.log(data);
         if (!data.success) {
           setToast(true);
-          // setA
           setisLoading(false);
         } else {
-          dispatch(setUser({ user: data.token }));
-          dispatch(setAuth({ isAuth: true }));
+          // dispatch(setUser({ user: data.token }));
+          // dispatch(setAuth({ isAuth: true }));
           localStorage.setItem("erpToken", data.token);
           localStorage.setItem("aliveToken", data.aliveToken);
           setToast(true);
           setisLoading(false);
           setLoginStatus(true);
+          setTimeout(() => {
+            navigate("/");
+          }, 3000);
         }
       })
       .catch((err) => {

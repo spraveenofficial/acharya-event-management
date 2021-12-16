@@ -44,8 +44,8 @@ const Home = () => {
       });
   };
   useEffect(() => {
-    getUserData();
-    getAttendence();
+    // getUserData();
+    // getAttendence();
   }, []);
   return (
     <Navbar>

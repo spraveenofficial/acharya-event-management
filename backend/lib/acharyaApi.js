@@ -1,6 +1,6 @@
 const axios = require("axios");
 const User = require("../database/model/users");
-const Event = require("../database/model/event")
+const Event = require("../database/model/event");
 const Auth = require("../services/auth");
 
 class Acharya {
@@ -76,7 +76,7 @@ class Acharya {
         });
       });
   }
-  async Attendence(req, res){
+  async Attendence(req, res) {
     await axios({
       url: process.env.ERP_ATTENDANCE,
       method: "POST",
@@ -105,8 +105,64 @@ class Acharya {
         });
       });
   }
-  async addEvent(req,res){
-    const {title, category,description,venue,slug,joiningFee,thumbnail, startDate,endsDate,winingPrize} = req.body
+  async addEvent(req, res) {
+    const {
+      title,
+      category,
+      description,
+      venue,
+      slug,
+      joiningFee,
+      thumbnail,
+      startDate,
+      endsDate,
+      eventDate,
+      winingPrize,
+      noOfSlots,
+      organisedBy,
+    } = req.body;
+    const newEvent = new Event({
+      title,
+      category,
+      description,
+      venue,
+      slug,
+      joiningFee,
+      thumbnail,
+      startDate,
+      endsDate,
+      eventDate,
+      winingPrize,
+      noOfSlots,
+      organisedBy,
+    });
+    await newEvent
+      .save()
+      .then((response) => {
+        return res.json({
+          message: "Successfully Created Event",
+          status: 200,
+          success: true,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.json({
+          message: "Error While Creating Event",
+          status: 400,
+          success: false,
+        });
+      });
+  }
+  async getEvents(req, res){
+    await Event.find({}).then((response) => {
+      console.log(response)
+      return res.json({
+        message: "Data fetched success",
+        success: true,
+        data: response
+      })
+    })
   }
 }
 

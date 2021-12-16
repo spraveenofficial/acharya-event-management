@@ -2,14 +2,17 @@ import Styles from "./Navbar.module.css"; //
 import { List } from "phosphor-react";
 import { Link } from "react-router-dom";
 import Logo from "../Logo/Logo";
+import { useSelector } from "react-redux";
 const Navbar = ({ children }) => {
+  const { user, isLoading } = useSelector((state) => state.auth);
+  // console.log(user);
   return (
     <>
       <nav>
         <div className={Styles.logo}>
           <h2>
             <Link to="/">
-              <Logo/>
+              <Logo />
             </Link>
           </h2>
         </div>
@@ -41,7 +44,7 @@ const Navbar = ({ children }) => {
             </li>
             <li>
               <Link to="/login">
-                <p>Login</p>
+                <p>{user?.student_name ? user.student_name : ""}</p>
               </Link>
             </li>
           </ul>

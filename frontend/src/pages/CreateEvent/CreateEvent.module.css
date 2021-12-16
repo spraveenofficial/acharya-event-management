@@ -34,8 +34,10 @@
   width: 500px !important;
   /* background: blue !important; */
   min-height: 200px;
-  padding-top: -80px !important;
-  position: sticky;
+}
+
+.description:not(textarea){
+  text-align: start;
 }
 
 .catrgoryinput {
@@ -108,6 +110,11 @@
   width: 238px;
   /* display: flex; */
   justify-content: center;
+
+}
+
+.dateinput{
+  color: black !important;
 }
 .error {
   color: red;

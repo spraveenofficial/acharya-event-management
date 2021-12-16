@@ -43,8 +43,8 @@ const Dashboard = () => {
   };
   // console.log(studentData.data.data.acerp_email)
   useEffect(() => {
-    getUserData();
-    getAttendence();
+    // getUserData();
+    // getAttendence();
   }, []);
   return (
     <Navbar>

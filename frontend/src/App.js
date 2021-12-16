@@ -8,11 +8,25 @@ import Attendence from "./pages/Attendence/Attendence";
 import Classes from "./pages/Classes/Classes";
 import Events from "./pages/Events/Events";
 import About from "./pages/About/About";
-import AddEvent from './pages/CreateEvent/CreateEvent'
+import Contribute from "./pages/Contribute/Contribute";
+import AddEvent from "./pages/CreateEvent/CreateEvent";
 import { useSelector } from "react-redux";
-import { isAuth } from "./store/authSlice";
+import store from "./store";
+import { loadUser } from "./actions/auth";
+import { useEffect } from "react";
+import setAuthToken from "./utils/setAuthToken";
 import { Navigate } from "react-router-dom";
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
+}
 function App() {
+  const token = localStorage.getItem("erpToken");
+  useEffect(() => {
+    if (token) {
+      console.log("executing");
+      store.dispatch(loadUser());
+    }
+  }, []);
   return (
     <Router>
       <Routes>
@@ -25,9 +39,12 @@ function App() {
         <Route path="/events" element={<Events />} />
         <Route path="/about" element={<About />} />
         <Route path="/addevent" element={<AddEvent />} />
+        <Route path="/contribute" element={<Contribute />} />
       </Routes>
     </Router>
+    // </Provider>
   );
 }
+
 
 export default App;
