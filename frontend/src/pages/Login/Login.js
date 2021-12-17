@@ -4,13 +4,14 @@ import Background from "../../images/cc.jpg";
 import Button from "../../components/Button/Button";
 import { useState } from "react";
 import axios from "axios";
+import store from "../../store";
+import { loadUser } from "../../actions/auth";
 import Toast from "../../components/Toast/Toast";
-import { useDispatch } from "react-redux";
-import { setAuth, setUser } from "../../store/authSlice";
+// import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 const Login = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [isLoading, setisLoading] = useState(false);
   const [auid, setAuid] = useState("");
   const [password, setPassword] = useState("");
@@ -48,10 +49,9 @@ const Login = () => {
           setToast(true);
           setisLoading(false);
         } else {
-          // dispatch(setUser({ user: data.token }));
-          // dispatch(setAuth({ isAuth: true }));
           localStorage.setItem("erpToken", data.token);
           localStorage.setItem("aliveToken", data.aliveToken);
+          store.dispatch(loadUser());
           setToast(true);
           setisLoading(false);
           setLoginStatus(true);

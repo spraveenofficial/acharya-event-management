@@ -7,42 +7,42 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import EventBox from "../../components/EventBox/Event";
 import Navbar from "../../components/Navbar/Navbar";
-import axios from "axios";
+// import axios from "axios";
 const Home = () => {
   const [studentData, setstudentData] = useState([]);
   const [attendence, setAttendence] = useState([]);
-  const getUserData = async () => {
-    await axios({
-      url: "/dashboard",
-      method: "POST",
-      headers: {
-        token: localStorage.getItem("erpToken"),
-      },
-    })
-      .then((response) => {
-        setstudentData(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-  const getAttendence = async () => {
-    await axios({
-      url: "/attendence",
-      method: "GET",
-      headers: {
-        token: localStorage.getItem("erpToken"),
-      },
-    })
-      .then((response) => {
-        setAttendence(response.data);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
+  // const getUserData = async () => {
+  //   await axios({
+  //     url: "/dashboard",
+  //     method: "POST",
+  //     headers: {
+  //       token: localStorage.getItem("erpToken"),
+  //     },
+  //   })
+  //     .then((response) => {
+  //       setstudentData(response.data);
+  //       console.log(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
+  // const getAttendence = async () => {
+  //   await axios({
+  //     url: "/attendence",
+  //     method: "GET",
+  //     headers: {
+  //       token: localStorage.getItem("erpToken"),
+  //     },
+  //   })
+  //     .then((response) => {
+  //       setAttendence(response.data);
+  //       console.log(response.data);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error);
+  //     });
+  // };
   useEffect(() => {
     // getUserData();
     // getAttendence();

@@ -44,6 +44,11 @@ const Navbar = ({ children }) => {
             </li>
             <li>
               <Link to="/login">
+                {/* <img
+                  className={Styles.userphoto}
+                  src="https://www.acharyainstitutes.in/student_photos/AGS19ABCA072/AGS19ABCA072.jpg"
+                  alt=""
+                /> */}
                 <p>{user?.student_name ? user.student_name : ""}</p>
               </Link>
             </li>

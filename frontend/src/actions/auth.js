@@ -1,8 +1,10 @@
 import axios from "axios";
-// import setAuthToken from "../utils/setAuthToken";
-import { SET_AUTH, REMOVE_AUTH } from "./types";
+import { SET_AUTH, REMOVE_AUTH, LOAD_USER } from "./types";
 
 export const loadUser = () => async (dispatch) => {
+  // dispatch({
+  //   type: LOAD_USER,
+  // });
   const token = localStorage.getItem("erpToken");
   try {
     const res = await axios({
@@ -12,7 +14,6 @@ export const loadUser = () => async (dispatch) => {
         token: token,
       },
     });
-    console.log(res.data)
     dispatch({
       type: SET_AUTH,
       payload: res.data.data.data,
@@ -22,4 +23,10 @@ export const loadUser = () => async (dispatch) => {
       type: REMOVE_AUTH,
     });
   }
+};
+
+export const getUser = () => async (dispatch) => {
+  dispatch({
+    type: LOAD_USER,
+  });
 };

@@ -1,4 +1,4 @@
-import { SET_AUTH, REMOVE_AUTH } from "../actions/types";
+import { SET_AUTH, REMOVE_AUTH, LOAD_USER } from "../actions/types";
 
 const initialState = {
   token: localStorage.getItem("erpToken"),
@@ -10,6 +10,13 @@ const initialState = {
 export default function (state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
+    case LOAD_USER:
+      return {
+        ...state,
+        isAuthenticated: false,
+        loading: false,
+        user: null,
+      };
     case SET_AUTH:
       return {
         ...state,

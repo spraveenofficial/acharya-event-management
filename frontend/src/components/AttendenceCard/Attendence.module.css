@@ -1,0 +1,60 @@
+.attendence {
+  background: gray;
+  height: 250px;
+  width: 400px;
+  border-radius: 8px !important;
+  overflow: hidden;
+  margin: 10px 0px;
+  position: relative;
+  animation: mymove 3s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes mymove {
+  from {
+    top: -100px;
+  }
+  to {
+    top: 0px;
+    /* background-color: blue; */
+  }
+}
+.first {
+  height: 50px;
+  width: auto;
+  /* background: rgb(49, 248, 49); */
+  /* align-items: center; */
+  text-align: center;
+  justify-content: center;
+  display: flex;
+}
+
+.first p {
+  color: #fff !important;
+  font-size: 15px;
+  font-weight: 900;
+  line-height: 50px;
+}
+
+.second {
+  display: flex;
+  /* align-items: center; */
+  text-align: center;
+}
+
+.second > div {
+  width: 50%;
+  padding: 10px 10px;
+  color: #fff;
+  /* border-bottom: 1px solid black; */
+}
+
+.second > div > h1 {
+  font-size: 70px;
+}
+
+@media (max-width: 767px) {
+  .attendence {
+    width: 100% !important;
+  }
+}

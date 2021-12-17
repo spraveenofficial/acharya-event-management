@@ -40,6 +40,7 @@ const CreateEvent = () => {
                     name="Enter Category of Event"
                     type="text"
                     // width="350px"
+                    // error={true}
                     className={Styles.catrgoryinput}
                   />
                 </div>

@@ -98,7 +98,7 @@ const ContributePage = () => {
                     ExpressJS.
                   </p>
                   <p>3. We don't check your marks at all.</p>
-                  <p>3. We don't even check your department.</p>
+                  <p>4. We don't even check your department.</p>
                 </div>
               </>
             )}
