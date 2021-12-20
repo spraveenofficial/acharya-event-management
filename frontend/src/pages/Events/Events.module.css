@@ -1,4 +1,10 @@
-.black{
-    color: black;
-    /* background: red; */
+.black {
+  color: black;
+  /* background: red; */
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

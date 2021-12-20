@@ -57,7 +57,7 @@ const Login = () => {
           setLoginStatus(true);
           setTimeout(() => {
             navigate("/");
-          }, 3000);
+          }, 5000);
         }
       })
       .catch((err) => {
@@ -67,7 +67,15 @@ const Login = () => {
   return (
     <div className={Styles.login}>
       {toast ? (
-        <Toast onClose={(e) => setToast(false)} status={loginStatus} />
+        <Toast
+          onClose={(e) => setToast(false)}
+          status={loginStatus}
+          message={
+            loginStatus
+              ? "Login Success. Redirecting.."
+              : `Invalid AUID or Password`
+          }
+        />
       ) : (
         ""
       )}

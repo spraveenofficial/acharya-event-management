@@ -13,10 +13,19 @@ class sendLoginAlert {
         token: token,
       },
     }).then((res) => {
-      this.sendMail(res.data.data.acerp_email);
+      this.sendLoginAlert(
+        res.data.data.student_name,
+        res.data.data.acerp_email
+      );
     });
   }
-  async sendMail(email) {
+  async sendLoginAlert(name, email) {
+    const subject = "Login Alert ! ⚠️";
+    const message = `<h3>Hey ${name}.\n\n </h3><p>Welcome to the world of acharyaThanks for using our open-source project. I am very glad to serve you. <br><br>Regards,<br>Praveen Kumar Singh.</p>`;
+    this.sendMail(email, message, subject);
+  }
+  async sendMail(email, message, subject) {
+    console.log(email);
     var transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -28,15 +37,21 @@ class sendLoginAlert {
     const mailOptions = {
       from: "Praveen Singh", // sender address
       to: email, // list of receivers
-      subject: "Hey, you got a Login alert", // Subject line
-      html: "<p>Thanks for using our open-source project. I am very glad to serve you.</p>", // plain text body
+      subject: subject, // Subject line
+      html: message, // plain text body
     };
 
     transporter.sendMail(mailOptions, function (err, info) {
       if (err) console.log(err);
-      else console.log(info);
+      else console.log("mail sent");
     });
   }
+  async sendContributionMail(email) {
+    const subject = "Thanks for applying ! ⚠️";
+    const message = `<p>Thanks for applying.<br><br>Regards,<br>Praveen Kumar Singh.</p>`;
+    this.sendMail(email, message, subject);
+  }
+  async sendBookingSuccessMail(email) {}
 }
 
 module.exports = new sendLoginAlert();

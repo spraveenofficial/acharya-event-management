@@ -21,14 +21,10 @@ const Toast = ({ message, status, onClose }) => {
                 <p className={Styles.toasttype}>
                   {status === true ? "Success" : "Failed"}
                 </p>
-                <p className={Styles.toastmessage}>
-                  {status === true
-                    ? "You have successfully logged in."
-                    : "Invalid UserName or Password"}
-                </p>
+                <p className={Styles.toastmessage}>{message}</p>
               </div>
               <div
-                onClick={() => setShowToast(false), onClose}
+                onClick={(() => setShowToast(false), onClose)}
                 className={Styles.toastclose}
               >
                 <X size={22} />

@@ -157,9 +157,15 @@ class Acharya {
         });
       });
   }
+  async isAdmin(req, res) {
+    const {auid} = req.body
+    await User.findOne({username: auid}).then((response) => {
+      return res.json(response)
+    })
+  }
   async getEvents(req, res) {
     await Event.find({}).then((response) => {
-      console.log(response);
+      // console.log(response);
       return res.json({
         message: "Data fetched success",
         success: true,

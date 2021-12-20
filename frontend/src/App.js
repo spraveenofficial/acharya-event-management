@@ -14,7 +14,7 @@ import Developer from "./pages/Developer/Developer";
 import store from "./store";
 import { getUser, loadUser } from "./actions/auth";
 import { useEffect } from "react";
-import { ProtectedRoutes, GuestRoutes } from "./ProtectedRoute";
+import { ProtectedRoutes, GuestRoutes, AdminRoute } from "./ProtectedRoute";
 import { useSelector } from "react-redux";
 
 function App() {
@@ -44,9 +44,11 @@ function App() {
             <Route path="/classes" element={<Classes />} />
             <Route path="/events" element={<Events />} />
             <Route path="/about" element={<About />} />
-            <Route path="/addevent" element={<AddEvent />} />
             <Route path="/contribute" element={<Contribute />} />
             <Route path="/developer" element={<Developer />} />
+          </Route>
+          <Route element={<AdminRoute />}>
+            <Route path="/addevent" element={<AddEvent />} />
           </Route>
         </Routes>
       )}

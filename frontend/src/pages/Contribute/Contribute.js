@@ -9,10 +9,15 @@ import Input from "../../components/Input/Input";
 import Button from "../../components/ColorButton/Button";
 import { useSelector } from "react-redux";
 import { useState } from "react";
+import Toast from "../../components/Toast/Toast";
+import axios from "axios";
 const ContributePage = () => {
+  const [submitStatus, setSubmitStatus] = useState(false);
+  const [toast, setToast] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const Loading = () => {
-    setIsLoading(!isLoading);
+    setIsLoading(true);
+    submitForm();
   };
   const { loading, user } = useSelector((state) => state.auth);
   // console.log(loading);
@@ -25,9 +30,43 @@ const ContributePage = () => {
       preserveAspectRatio: "xMidYMid slice",
     },
   };
+  const submitForm = async () => {
+    await axios({
+      url: "/contribute",
+      method: "POST",
+      headers: {
+        token: localStorage.getItem("erpToken"),
+      },
+      data: {
+        name: user.student_name,
+        auid: user.auid,
+        department: user.course,
+        email: user.acerp_email,
+      },
+    })
+      .then((res) => {
+        setIsLoading(false);
+        setToast(true);
+        setSubmitStatus(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
   return (
     <Navbar>
       <Container>
+        {toast ? (
+          <Toast
+            onClose={(e) => setToast(false)}
+            status={submitStatus}
+            message={
+              submitStatus ? "Sucessfully Registered" : `Failed to Register`
+            }
+          />
+        ) : (
+          ""
+        )}
         <div className={Styles.contribution}>
           <div className={Styles.left}>
             <div className={Styles.title}></div>
