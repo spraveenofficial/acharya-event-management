@@ -15,7 +15,7 @@ const ContributePage = () => {
     setIsLoading(!isLoading);
   };
   const { loading, user } = useSelector((state) => state.auth);
-  console.log(loading);
+  // console.log(loading);
   const defaultOptions = {
     loop: true,
     autoplay: true,

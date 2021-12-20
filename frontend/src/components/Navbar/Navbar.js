@@ -2,10 +2,15 @@ import Styles from "./Navbar.module.css"; //
 import { List } from "phosphor-react";
 import { Link } from "react-router-dom";
 import Logo from "../Logo/Logo";
+import store from "../../store";
+import { userLogout } from "../../actions/auth";
 import { useSelector } from "react-redux";
 const Navbar = ({ children }) => {
-  const { user, isLoading } = useSelector((state) => state.auth);
-  // console.log(user);
+  const { user } = useSelector((state) => state.auth);
+  const Logout = () => {
+    // console.log('Loging out')
+    store.dispatch(userLogout());
+  };
   return (
     <>
       <nav>
@@ -43,14 +48,22 @@ const Navbar = ({ children }) => {
               </Link>
             </li>
             <li>
-              <Link to="/login">
-                {/* <img
+              {/* <Link to="/login"> */}
+              {/* <img
                   className={Styles.userphoto}
                   src="https://www.acharyainstitutes.in/student_photos/AGS19ABCA072/AGS19ABCA072.jpg"
                   alt=""
                 /> */}
-                <p>{user?.student_name ? user.student_name : ""}</p>
-              </Link>
+              <p onClick={Logout}>
+                {user?.student_name ? (
+                  <>
+                    {user.student_name}, <span> Logout</span>
+                  </>
+                ) : (
+                  ""
+                )}
+              </p>
+              {/* </Link> */}
             </li>
           </ul>
         </div>

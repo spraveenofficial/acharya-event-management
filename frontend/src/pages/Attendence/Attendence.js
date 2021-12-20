@@ -6,6 +6,7 @@ import Navbar from "../../components/Navbar/Navbar";
 import AttendenceBox from "../../components/AttendenceCard/Attendence";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Loader from "../../components/LoaderPage/Loader";
 const Attendence = () => {
   const [attendence, setAttendence] = useState([]);
   const randomColors = ["#b3b3ff", "#66ff66", "blue", "purple", "#ff33ff"];
@@ -15,26 +16,25 @@ const Attendence = () => {
     return random;
   };
 
-  const getAttendence = async () => {
-    await axios({
-      url: "/attendence",
-      method: "GET",
-      headers: {
-        token: localStorage.getItem("erpToken"),
-      },
-    })
-      .then((response) => {
-        setAttendence(response.data);
-        // console.log(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
   useEffect(() => {
+    const getAttendence = async () => {
+      await axios({
+        url: "/attendence",
+        method: "GET",
+        headers: {
+          token: localStorage.getItem("erpToken"),
+        },
+      })
+        .then((response) => {
+          setAttendence(response.data);
+          // console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
     getAttendence();
   }, []);
-  // console.log(attendence.data.data)
   return (
     <Navbar>
       <Container>
@@ -44,6 +44,7 @@ const Attendence = () => {
             ? attendence.data.data.map((subjects) => {
                 return (
                   <AttendenceBox
+                    key={subjects.subject_code}
                     subjectName={subjects.subject_name}
                     attendedClasses={subjects.present}
                     totalClasses={subjects.total}
@@ -51,7 +52,7 @@ const Attendence = () => {
                   />
                 );
               })
-            : "fetching"}
+            : <Loader />}
         </div>
       </Container>
       <Contribute />

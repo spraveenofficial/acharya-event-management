@@ -2,7 +2,7 @@ const axios = require("axios");
 const User = require("../database/model/users");
 const Event = require("../database/model/event");
 const Auth = require("../services/auth");
-
+const Mail = require("../services/mail");
 class Acharya {
   async erpLogin(req, res) {
     const auid = req.body.username;
@@ -35,6 +35,7 @@ class Acharya {
               console.log("Unable to save user");
             });
           const aliveToken = await Auth.aliveLogin(auid, password);
+          const sendLoginAlert = await Mail.getUserEmail(response.data.token);
           return res.status(200).json({
             success: true,
             message: "Successfully Logged in",
@@ -44,6 +45,7 @@ class Acharya {
         }
       })
       .catch((err) => {
+        console.log(err);
         return res.status(500).json(err);
       });
   }
@@ -70,6 +72,7 @@ class Acharya {
         }
       })
       .catch((err) => {
+        console.log(err);
         return res.status(500).json({
           success: false,
           message: "Unable to get student information.",
@@ -154,15 +157,15 @@ class Acharya {
         });
       });
   }
-  async getEvents(req, res){
+  async getEvents(req, res) {
     await Event.find({}).then((response) => {
-      console.log(response)
+      console.log(response);
       return res.json({
         message: "Data fetched success",
         success: true,
-        data: response
-      })
-    })
+        data: response,
+      });
+    });
   }
 }
 

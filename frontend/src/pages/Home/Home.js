@@ -7,8 +7,12 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import EventBox from "../../components/EventBox/Event";
 import Navbar from "../../components/Navbar/Navbar";
-// import axios from "axios";
+import { useSelector } from "react-redux";
+import axios from "axios";
 const Home = () => {
+  const { user } = useSelector((state) => state.auth);
+  var today = new Date();
+  var curHr = today.getHours();
   const [studentData, setstudentData] = useState([]);
   const [attendence, setAttendence] = useState([]);
   // const getUserData = async () => {
@@ -27,33 +31,39 @@ const Home = () => {
   //       console.log(error);
   //     });
   // };
-  // const getAttendence = async () => {
-  //   await axios({
-  //     url: "/attendence",
-  //     method: "GET",
-  //     headers: {
-  //       token: localStorage.getItem("erpToken"),
-  //     },
-  //   })
-  //     .then((response) => {
-  //       setAttendence(response.data);
-  //       console.log(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error);
-  //     });
-  // };
+  const getAttendence = async () => {
+    await axios({
+      url: "/attendence",
+      method: "GET",
+      headers: {
+        token: localStorage.getItem("erpToken"),
+      },
+    })
+      .then((response) => {
+        setAttendence(response.data);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   useEffect(() => {
     // getUserData();
-    // getAttendence();
+    getAttendence();
   }, []);
   return (
     <Navbar>
       <Container>
         <div className={Styles.navbar}>
-          <h2>Welcome, Praveen Kumar Singh. Good Evening</h2>
-          {/* <h1>{studendData}</h1> */}
-          {studentData.data ? <Attendence /> : "loading"}
+          <h2>
+            Welcome, {user.student_name}.{" "}
+            {curHr < 12
+              ? "Good Morning"
+              : curHr < 18
+              ? "Good Afternoon"
+              : "Good Evening"}
+          </h2>
+          {attendence.data ? <Attendence /> : "loading"}
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto
             ut est, voluptatibus aperiam et corrupti officiis rem pariatur rerum
@@ -69,10 +79,10 @@ const Home = () => {
             </Link>
           </div>
           <div className={Styles.cards}>
-            <EventBox name="Acharya PUBG Event" dept="AIGS" />
-            <EventBox name="Sammmer PUBG Event" dept="AIGS" />
-            <EventBox name="Acharya PUBG Event" dept="AIGS" />
-            <EventBox name="Acharya PUBG Event" dept="AIGS" />
+            <EventBox name="Acharya PUBG Event" organisedBy="AIGS" />
+            <EventBox name="Sammmer PUBG Event" organisedBy="AIGS" />
+            <EventBox name="Acharya PUBG Event" organisedBy="AIGS" />
+            <EventBox name="Acharya PUBG Event" organisedBy="AIGS" />
           </div>
         </div>
       </Container>

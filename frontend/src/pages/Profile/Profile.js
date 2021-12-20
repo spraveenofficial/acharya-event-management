@@ -4,12 +4,12 @@ import Contribute from "../../components/Contribute/Contribution";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import Styles from "./Profile.module.css";
-
+import Profiles from "../../components/Profile/Profile";
 const Profile = () => {
   return (
     <Navbar>
       <Container>
-        <div className={Styles.profile}>
+        {/* <div className={Styles.profile}>
           <div className={Styles.name}>
             <div className={Styles.user}>
               <UserCircle size={68} />
@@ -23,7 +23,8 @@ const Profile = () => {
               <h2>This is second</h2>
           </div>
           <div className={Styles.data}></div>
-        </div>
+        </div> */}
+        <Profiles />
       </Container>
       <Contribute />
       <Footer />

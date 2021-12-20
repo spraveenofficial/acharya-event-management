@@ -1,6 +1,6 @@
 import Styles from "./Event.module.css";
 
-const Event = ({ name, dept, duration, category }) => {
+const Event = ({ name, organisedBy, date, duration, category }) => {
   return (
     <section className="cards">
       <article className="card card--1">
@@ -19,17 +19,19 @@ const Event = ({ name, dept, duration, category }) => {
           </div>
         </div>
         <div className="card__img"></div>
-        <a href="#" className="card_link">
-          <div className="card__img--hover"></div>
-        </a>
+        {/* <a href="#" className="card_link"> */}
+        <div className="card__img--hover"></div>
+        {/* </a> */}
         <div className="card__info">
-          <span className="card__category">Gaming</span>
+          <span className="card__category" className={Styles.flex}>
+            {category}
+            <span>{date}</span>
+          </span>
           <h3 className="card__title">{name}</h3>
           <span className="card__by">
-            by{" "}
-            <a href="#" className="card__author" title="author">
-              {dept}
-            </a>
+            by {/* <a href="#" className="card__author" title="author"> */}
+            {organisedBy}
+            {/* </a> */}
           </span>
         </div>
       </article>

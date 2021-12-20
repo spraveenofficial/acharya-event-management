@@ -1,0 +1,17 @@
+.devs{
+    display: flex;
+}
+
+.left, .right{
+    width: 50%;
+    padding: 20px 10px;
+}
+
+
+.left{
+    border-right: 1px solid black;
+}
+
+.right{
+    /* background: red; */
+}

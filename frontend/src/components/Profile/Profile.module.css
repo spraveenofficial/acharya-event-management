@@ -1,0 +1,30 @@
+.profile{
+    display: flex;
+}
+
+.left, .right{
+    width: 50%;
+    align-items: center;
+    text-align: center;
+}
+
+.right{
+    /* background: red; */
+}
+
+.left img{
+    width: 200px;
+    /* border: 1px red; */
+}
+.left > .studentname {
+    /* align-items: center; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+} 
+@media(max-width: 768px){
+    .profile{
+        flex-direction: column;
+    }
+}
+

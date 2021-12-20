@@ -26,6 +26,7 @@ export default function (state = initialState, action) {
       };
     case REMOVE_AUTH:
       localStorage.removeItem("erpToken");
+      localStorage.removeItem("aliveToken");
       return {
         ...state,
         token: null,

@@ -1,84 +1,23 @@
 {
+    "message": "Data fetched success",
     "success": true,
-    "message": "User data retreive successfully",
-    "data": {
-        "success": true,
-        "data": [
-            {
-                "subject_name": "Design and Analysis of Algorithms Lab",
-                "attendance": 100,
-                "subject_code": "15CSL47",
-                "subject_name_short": "DAAL",
-                "present": "3",
-                "total": "3"
-            },
-            {
-                "subject_name": "Artificial Intelligence",
-                "attendance": 0,
-                "subject_code": "15CS562",
-                "subject_name_short": "AI",
-                "present": "0",
-                "total": "2"
-            },
-            {
-                "subject_name": "THEORY OF COMPUTATION",
-                "attendance": 45.45,
-                "subject_code": "SB7120",
-                "subject_name_short": "TOC",
-                "present": "10",
-                "total": "22"
-            },
-            {
-                "subject_name": "OOPS WITH JAVA LAB",
-                "attendance": 100,
-                "subject_code": "15CS46P",
-                "subject_name_short": "OOPSJAVALAB",
-                "present": "3",
-                "total": "3"
-            },
-            {
-                "subject_name": "BCA_JAVA PROGRAMMING",
-                "attendance": 30,
-                "subject_code": "SB7118",
-                "subject_name_short": "BCA_JAVA",
-                "present": "6",
-                "total": "20"
-            },
-            {
-                "subject_name": "BCA_DATA COMMUNICATION AND NETWORKS",
-                "attendance": 37.04,
-                "subject_code": "SB7115",
-                "subject_name_short": "BCA_DCN",
-                "present": "10",
-                "total": "27"
-            },
-            {
-                "subject_name": "Banking and Finance",
-                "attendance": 60,
-                "subject_code": "ASDBFNC",
-                "subject_name_short": "ASD B & F ",
-                "present": "6",
-                "total": "10"
-            },
-            {
-                "subject_name": "Analysis and Design of   Algorithm",
-                "attendance": 44.12,
-                "subject_code": "BCA504T",
-                "subject_name_short": "ADA",
-                "present": "15",
-                "total": "34"
-            },
-            {
-                "subject_name": "Artificial Intelligence",
-                "attendance": 22.22,
-                "subject_code": "BCA502T",
-                "subject_name_short": "AI",
-                "present": "6",
-                "total": "27"
-            }
-        ],
-        "current_year": 3,
-        "current_sem": 5,
-        "Average_attendance": 48.758888888889
-    }
+    "data": [
+        {
+            "_id": "61b9b0972c2510f82fa60cf3",
+            "title": "Acharya Ludo Competition",
+            "category": "Game",
+            "description": "This is First Demo Event happening in Acharya",
+            "venue": "AIGS Auditorium",
+            "slug": "test-demo-event",
+            "joiningFee": "400",
+            "thumbnail": "no",
+            "startDate": "20-12-2021",
+            "endsDate": "24-12-2021",
+            "eventDate": "30-12-2021",
+            "winingPrize": "500",
+            "organisedBy": "Praveen Kumar Singh",
+            "noOfSlots": 40,
+            "__v": 0
+        }
+    ]
 }

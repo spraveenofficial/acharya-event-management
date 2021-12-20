@@ -1,21 +1,42 @@
 var nodemailer = require("nodemailer");
+const axios = require("axios");
 
-var transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: "praveena.19.abca@acharya.ac.in",
-    pass: "acharya1234",
-  },
-});
+class sendLoginAlert {
+  constructor() {
+    const self = this;
+  }
+  async getUserEmail(token) {
+    await axios({
+      url: process.env.ERP_PROFILE,
+      method: "POST",
+      headers: {
+        token: token,
+      },
+    }).then((res) => {
+      this.sendMail(res.data.data.acerp_email);
+    });
+  }
+  async sendMail(email) {
+    var transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.ACHARYA_EMAIL,
+        pass: process.env.ACHARYA_PASSWORD,
+      },
+    });
 
-const mailOptions = {
-  from: "Praveen Singh", // sender address
-  to: "spraveen593@gmail.com", // list of receivers
-  subject: "test mail", // Subject line
-  html: "<h1>this is a test mail.</h1>", // plain text body
-};
+    const mailOptions = {
+      from: "Praveen Singh", // sender address
+      to: email, // list of receivers
+      subject: "Hey, you got a Login alert", // Subject line
+      html: "<p>Thanks for using our open-source project. I am very glad to serve you.</p>", // plain text body
+    };
 
-transporter.sendMail(mailOptions, function (err, info) {
-  if (err) console.log(err);
-  else console.log(info);
-});
+    transporter.sendMail(mailOptions, function (err, info) {
+      if (err) console.log(err);
+      else console.log(info);
+    });
+  }
+}
+
+module.exports = new sendLoginAlert();

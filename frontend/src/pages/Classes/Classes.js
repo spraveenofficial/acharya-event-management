@@ -3,11 +3,13 @@ import Container from "../../components/Container/Container";
 import Contribute from "../../components/Contribute/Contribution";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
+import Loader from "../../components/LoaderPage/Loader";
 const Classes = () => {
   return (
     <Navbar>
       <Container>
         <h1>This is Classes page</h1>
+        <Loader />
       </Container>
       <Contribute />
       <Footer />

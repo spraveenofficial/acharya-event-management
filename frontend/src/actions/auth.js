@@ -30,3 +30,9 @@ export const getUser = () => async (dispatch) => {
     type: LOAD_USER,
   });
 };
+
+export const userLogout = () => (dispatch) => {
+  dispatch({
+    type: REMOVE_AUTH,
+  });
+};

@@ -9,7 +9,13 @@ const Developer = () => {
     <Navbar>
       <Container>
         <div className={Styles.devs}>
-          <h2>This is dev page</h2>
+          <div className={Styles.left}>
+            <h2>Praveen Kumar Singh</h2>
+            <p>BCA (2019 - 2022)</p>
+          </div>
+          <div className={Styles.right}>
+
+          </div>
         </div>
       </Container>
       <Contribute />

@@ -1,5 +1,5 @@
 .attendence {
-  background: gray;
+  background: rgb(94, 91, 91);
   height: 250px;
   width: 400px;
   border-radius: 8px !important;
@@ -8,6 +8,7 @@
   position: relative;
   animation: mymove 3s;
   animation-fill-mode: forwards;
+  cursor: pointer;
 }
 
 @keyframes mymove {
