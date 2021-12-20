@@ -9,13 +9,12 @@ import { useState, useEffect } from "react";
 import Loader from "../../components/LoaderPage/Loader";
 const Attendence = () => {
   const [attendence, setAttendence] = useState([]);
-  const randomColors = ["#b3b3ff", "#66ff66", "blue", "purple", "#ff33ff"];
-  const generateColor = () => {
-    const random =
-      randomColors[Math.floor(Math.random() * randomColors.length)];
-    return random;
-  };
-
+  // const randomColors = ["C615F4", "", "blue", "#11D920", "#ff33ff"];
+  // const generateColor = () => {
+  //   const random =
+  //     randomColors[Math.floor(Math.random() * randomColors.length)];
+  //   return random;
+  // };
   useEffect(() => {
     const getAttendence = async () => {
       await axios({
@@ -39,21 +38,33 @@ const Attendence = () => {
     <Navbar>
       <Container>
         <h1>Attendence</h1>
-        <div className={Styles.attendencecards}>
-          {attendence.data
-            ? attendence.data.data.map((subjects) => {
+        {attendence.data ? (
+          <>
+            <div className={Styles.attendencecards}>
+              {attendence.data.data.map((subjects) => {
                 return (
                   <AttendenceBox
                     key={subjects.subject_code}
                     subjectName={subjects.subject_name}
                     attendedClasses={subjects.present}
                     totalClasses={subjects.total}
-                    bg={generateColor()}
+                    bg="#1F2889"
+                    percentage={`${(subjects.present / subjects.total) * 100}%`}
                   />
                 );
-              })
-            : <Loader />}
-        </div>
+              })}
+            </div>
+            <h2>Important Note</h2>
+            <p className={Styles.black}>
+              We are providing this stats based on your ERP data. We are not
+              providing any official services to ERP system. If you find any
+              error or data inaccuracy in attendence, please report to officials
+              now.
+            </p>
+          </>
+        ) : (
+          <Loader />
+        )}
       </Container>
       <Contribute />
       <Footer />

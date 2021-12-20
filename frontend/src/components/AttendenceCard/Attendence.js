@@ -1,6 +1,6 @@
 import Styles from "./Attendence.module.css";
 import Progress from "../ProgressBar/Progress";
-const Attendence = ({ subjectName, totalClasses, attendedClasses, bg }) => {
+const Attendence = ({ subjectName, totalClasses, attendedClasses, bg, percentage }) => {
   return (
     <div className={Styles.attendence}>
       <div style={{ background: bg }} className={Styles.first}>
@@ -17,7 +17,7 @@ const Attendence = ({ subjectName, totalClasses, attendedClasses, bg }) => {
         </div>
       </div>
       <div className={Styles.third}>
-        <Progress percentage="20px"/>
+        <Progress percentage={percentage} />
       </div>
     </div>
   );

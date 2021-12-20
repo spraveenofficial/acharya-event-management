@@ -3,3 +3,7 @@
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
+
+.black {
+  color: black !important;
+}

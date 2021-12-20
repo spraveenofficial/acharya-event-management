@@ -7,17 +7,17 @@
   padding: 0 5px;
   display: flex;
   height: 40px;
-  /* width: 500px; */
 }
 
-.progressvalue {
-  height: 30px;
-  width: 20%;
+
+.progressvalue{
+  height: 25px;
   animation: load 3s normal forwards;
   box-shadow: 0 10px 40px -10px #fff;
   border-radius: 100px;
-  background: #fff;
+  /* background: #fff; */
 }
+
 
 @keyframes load {
   0% {

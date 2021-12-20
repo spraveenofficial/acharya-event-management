@@ -49,7 +49,7 @@ const Home = () => {
   };
   useEffect(() => {
     // getUserData();
-    getAttendence();
+    // getAttendence();
   }, []);
   return (
     <Navbar>

@@ -1,11 +1,27 @@
 import Styles from "./Progress.module.css";
-
+import React, { useRef, useLayoutEffect } from "react";
 const Progress = ({ percentage }) => {
+  const ref = useRef(null);
+  useLayoutEffect(() => {
+    ref.current.style.setProperty("width", percentage);
+  }, []);
   return (
-    <div class={Styles.progress}>
+    <div className={Styles.progress}>
       <div
-        class={Styles.progressvalue}
-        styles={{ height: percentage}}
+        style={{
+          background:
+            parseInt(percentage) <= 20
+              ? "#FC3B36"
+              : parseInt(percentage) <= 35
+              ? "#F9673A"
+              : parseInt(percentage) <= 70
+              ? "#32F83A"
+              : parseInt(percentage) <= 100
+              ? "#07F911"
+              : "",
+        }}
+        ref={ref}
+        className={Styles.progressvalue}
       ></div>
     </div>
   );

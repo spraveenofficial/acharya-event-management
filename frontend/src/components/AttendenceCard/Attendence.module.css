@@ -1,5 +1,5 @@
 .attendence {
-  background: rgb(94, 91, 91);
+  background: #1f284c;
   height: 250px;
   width: 400px;
   border-radius: 8px !important;
@@ -9,8 +9,14 @@
   animation: mymove 3s;
   animation-fill-mode: forwards;
   cursor: pointer;
+  position: relative;
+  transition: 0.3s ease-out;
 }
 
+
+.attendence:hover {
+  background: #101733 !important;
+}
 @keyframes mymove {
   from {
     top: -100px;
