@@ -1,17 +1,73 @@
-.devs{
-    display: flex;
+.devs {
+  display: flex;
 }
 
-.left, .right{
-    width: 50%;
-    padding: 20px 10px;
+.devs > p{
+    color: black !important;
+}
+.left,
+.right {
+  width: 50%;
+  padding: 20px 10px;
+}
+
+.icons {
+  display: flex;
+}
+.profile {
+  border-right: 1px solid black;
+  justify-content: space-between;
+  display: flex;
+  /* background: red; */
 }
 
 
-.left{
-    border-right: 1px solid black;
+.photo {
+  display: inline-block;
+  width: 250px;
+  height: auto;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  transition: transform 0.3s;
+  cursor: pointer;
+  margin: 10px;
 }
 
-.right{
+.name{
     /* background: red; */
+    width: 60%;
+}
+
+.photo:hover{
+    transform: scale(1.06);
+}
+
+.bio{
+  color: black;
+  font-weight: 500;
+  /* background: red; */
+}
+
+@media(max-width: 767px){
+  .photo{
+    width: 120px;
+  }
+  .right, .left{
+    width: 100%;
+  }
+  .devs{
+    flex-direction: column;
+  }
+  .profile{
+    border-right: none;
+    border-bottom: 1px solid black;
+  }
+}
+
+@media(min-width: 768px) and (max-width: 1200px){
+  .photo{
+    width: 150px;
+  }
 }

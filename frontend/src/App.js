@@ -18,7 +18,7 @@ import { ProtectedRoutes, GuestRoutes, AdminRoute } from "./ProtectedRoute";
 import { useSelector } from "react-redux";
 
 function App() {
-  const { loading, isAuthenticated } = useSelector((state) => state.auth);
+  const { loading } = useSelector((state) => state.auth);
   const token = localStorage.getItem("erpToken");
   useEffect(() => {
     if (token) {

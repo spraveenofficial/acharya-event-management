@@ -1,0 +1,17 @@
+.socials{
+    background: red;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    transition: all 0.3s;
+    margin-right: 5px;
+}
+
+
+.socials:hover{
+   opacity: 2.9;
+}

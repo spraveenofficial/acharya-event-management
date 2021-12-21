@@ -22,7 +22,7 @@ const Progress = ({ percentage }) => {
         }}
         ref={ref}
         className={Styles.progressvalue}
-      ></div>
+      ><span>{parseInt(percentage) > 1 ? `${parseInt(percentage)} %` : ''}</span></div>
     </div>
   );
 };

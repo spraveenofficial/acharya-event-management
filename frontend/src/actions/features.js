@@ -1,5 +1,7 @@
 import { LOAD_SUPERUSER, LOAD_ADMIN, NORMAL_USER } from "../actions/types";
 import axios from "axios";
+
+
 export const loadAdmin = (auid) => async (dispatch) => {
   const token = localStorage.getItem("erpToken");
   try {

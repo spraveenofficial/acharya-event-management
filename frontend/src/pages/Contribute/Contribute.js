@@ -13,6 +13,7 @@ import Toast from "../../components/Toast/Toast";
 import axios from "axios";
 const ContributePage = () => {
   const [submitStatus, setSubmitStatus] = useState(false);
+  const [response, setResponse] = useState("");
   const [toast, setToast] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const Loading = () => {
@@ -45,9 +46,21 @@ const ContributePage = () => {
       },
     })
       .then((res) => {
-        setIsLoading(false);
-        setToast(true);
-        setSubmitStatus(true);
+        if (res.data.message === "You're already registered.") {
+          setToast(true);
+          setIsLoading(false);
+          setSubmitStatus(false);
+          setResponse("You have already registered.");
+        } else if (res.data.success === false) {
+          setToast(true);
+          setIsLoading(false);
+          setSubmitStatus(false);
+          setResponse("Unable to Apply.");
+        } else {
+          setToast(true);
+          setIsLoading(false);
+          setSubmitStatus(true);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -61,7 +74,7 @@ const ContributePage = () => {
             onClose={(e) => setToast(false)}
             status={submitStatus}
             message={
-              submitStatus ? "Sucessfully Registered" : `Failed to Register`
+              submitStatus ? "Sucessfully Registered" : response
             }
           />
         ) : (

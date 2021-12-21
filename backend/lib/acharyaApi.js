@@ -108,6 +108,34 @@ class Acharya {
         });
       });
   }
+  async onlineClasses(req, res) {
+    console.log("hiting");
+    await axios({
+      url: process.env.ONLINE_CLASSES,
+      method: "POST",
+      headers: {
+        Authorization: req.headers.authorization,
+      },
+    })
+      .then((response) => {
+        console.log(response.data);
+        if (response.data.data.length === 0) {
+          return res.json({
+            success: true,
+            message: "No Classes today",
+          });
+        } else {
+          return res.json({
+            success: true,
+            message: "No Classes today",
+            classes: response.data.data,
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   async addEvent(req, res) {
     const {
       title,
@@ -158,10 +186,10 @@ class Acharya {
       });
   }
   async isAdmin(req, res) {
-    const {auid} = req.body
-    await User.findOne({username: auid}).then((response) => {
-      return res.json(response)
-    })
+    const { auid } = req.body;
+    await User.findOne({ username: auid }).then((response) => {
+      return res.json(response);
+    });
   }
   async getEvents(req, res) {
     await Event.find({}).then((response) => {

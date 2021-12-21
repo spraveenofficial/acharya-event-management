@@ -15,6 +15,10 @@ const contributeSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    isSelected: {
+      type: Boolean,
+      default: false
+    }
   },
   {
     timestamps: true,

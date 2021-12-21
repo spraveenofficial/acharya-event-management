@@ -4,7 +4,16 @@ import Contribute from "../../components/Contribute/Contribution";
 import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import Loader from "../../components/LoaderPage/Loader";
+import store from "../../store";
+import { loadOnlineClass } from "../../actions/class";
+import { useEffect } from "react";
+
 const Classes = () => {
+  useEffect(() => {
+    console.log("ok");
+    store.dispatch(loadOnlineClass());
+  }, []);
+
   return (
     <Navbar>
       <Container>

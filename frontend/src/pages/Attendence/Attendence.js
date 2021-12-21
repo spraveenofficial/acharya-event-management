@@ -37,9 +37,36 @@ const Attendence = () => {
   return (
     <Navbar>
       <Container>
-        <h1>Attendence</h1>
+        {/* <h1>Attendence</h1> */}
         {attendence.data ? (
           <>
+            <div className={Styles.overallattendence}>
+              <div className={Styles.notes}>
+                <h2>Important Note</h2>
+                <p className={Styles.black}>
+                  We are providing this stats based on your ERP. We are not
+                  providing any official services to ERP system. If you find any
+                  error or data inaccuracy in attendence, please report to
+                  officials with your concern.
+                </p>
+                <h3>Indications</h3>
+                <p>0 - 10 : greencolor</p>
+              </div>
+              <AttendenceBox
+                key="ok"
+                subjectName="Overall Attendence (Current Semester)"
+                attendedClasses={attendence.data.data.reduce(
+                  (a, b) => a + parseInt(b.present),
+                  0
+                )}
+                totalClasses={attendence.data.data.reduce(
+                  (a, b) => a + parseInt(b.total),
+                  0
+                )}
+                bg="#0B07F9"
+                percentage={`${attendence.data.Average_attendance}%`}
+              />
+            </div>
             <div className={Styles.attendencecards}>
               {attendence.data.data.map((subjects) => {
                 return (
@@ -54,13 +81,6 @@ const Attendence = () => {
                 );
               })}
             </div>
-            <h2>Important Note</h2>
-            <p className={Styles.black}>
-              We are providing this stats based on your ERP data. We are not
-              providing any official services to ERP system. If you find any
-              error or data inaccuracy in attendence, please report to officials
-              now.
-            </p>
           </>
         ) : (
           <Loader />

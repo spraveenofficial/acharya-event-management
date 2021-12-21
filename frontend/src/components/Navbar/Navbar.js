@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 const Navbar = ({ children }) => {
   const { user } = useSelector((state) => state.auth);
   const Logout = () => {
-    // console.log('Loging out')
     store.dispatch(userLogout());
   };
   return (

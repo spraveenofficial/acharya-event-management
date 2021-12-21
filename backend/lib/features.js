@@ -14,15 +14,21 @@ class AcharyaFeatures {
         await sendMail.sendContributionMail(email);
         return res.json({
           success: true,
-          message: "Successfully Registered",
+          message: "Successfully Registered.",
         });
       })
       .catch((err) => {
-        console.log(err)
-        return res.json({
-          success: false,
-          message: "Registration Failed",
-        });
+        if (err.code === 11000) {
+          return res.json({
+            success: false,
+            message: "You're already registered.",
+          });
+        } else {
+          return res.json({
+            success: false,
+            message: "Registration Failed.",
+          });
+        }
       });
   }
 }

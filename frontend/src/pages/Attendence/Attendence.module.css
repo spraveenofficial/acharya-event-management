@@ -3,7 +3,40 @@
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
-
+.overallattendence {
+  margin: 0px 60px;
+  display: flex;
+  justify-content: space-between;
+}
 .black {
   color: black !important;
+}
+
+.notes{
+  width: 62% !important;
+  padding: 20px 0px;
+  animation: mymove 3s;
+  animation-fill-mode: forwards;
+  position: relative;
+  transition: 0.3s ease-out;
+}
+
+
+@keyframes mymove {
+  from {
+    top: -100px;
+  }
+  to {
+    top: 0px;
+  }
+}
+
+@media (max-width: 767px){
+  .overallattendence {
+    flex-direction: column;
+    margin: 0px 0px;
+  }
+  .notes{
+    width: 100% !important;
+  }
 }
