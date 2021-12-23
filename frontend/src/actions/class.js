@@ -9,7 +9,7 @@ import axios from "axios";
 
 export const loadOnlineClass = (auid) => async (dispatch) => {
   const token = localStorage.getItem("aliveToken");
-  console.log(token);
+  // console.log(token);
   try {
     const res = await axios({
       method: "POST",
@@ -35,4 +35,21 @@ export const loadOnlineClass = (auid) => async (dispatch) => {
       type: SETNO_ONLINECLASS,
     });
   }
+};
+
+export const loadOfflineClass = () => async (dispatch) => {
+  const token = localStorage.getItem("erpToken");
+  console.log(token);
+  await axios({
+    method: "POST",
+    url: "/offlineclass",
+    headers: {
+      token: token,
+    },
+  }).then((res) => {
+    dispatch({
+      type: LOAD_OFFLINECLASS,
+      payload: res.data,
+    });
+  });
 };

@@ -1,0 +1,11 @@
+.offline {
+  border-bottom: 2px solid black;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.boxes {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}

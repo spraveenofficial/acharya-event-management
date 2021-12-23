@@ -109,7 +109,6 @@ class Acharya {
       });
   }
   async onlineClasses(req, res) {
-    console.log("hiting");
     await axios({
       url: process.env.ONLINE_CLASSES,
       method: "POST",
@@ -118,7 +117,6 @@ class Acharya {
       },
     })
       .then((response) => {
-        console.log(response.data);
         if (response.data.data.length === 0) {
           return res.json({
             success: true,
@@ -134,6 +132,38 @@ class Acharya {
       })
       .catch((err) => {
         console.log(err);
+      });
+  }
+  async offlineClasses(req, res) {
+    const date = new Date();
+    let month = date.getMonth();
+    let year = date.getFullYear();
+    let todayDate = date.getDate();
+    console.log(todayDate);
+    await axios({
+      url: process.env.OFFLINE_CLASSES,
+      method: "POST",
+      headers: {
+        token: req.headers.token,
+      },
+      data: {
+        month: month + 1,
+        year: year,
+      },
+    })
+      .then((response) => {
+      //   console.log(response.data.data.length);
+      //   console.log(response.data.data[todayDate - 1]);
+        return res.json({
+          success: true,
+          classes: response.data.data[todayDate - 1],
+        });
+      })
+      .catch((err) => {
+        return res.json({
+          success: false,
+          message: "Unable to get offline classes",
+        });
       });
   }
   async addEvent(req, res) {

@@ -38,7 +38,7 @@ const Navbar = ({ children }) => {
             </li>
             <li>
               <Link to="/classes">
-                <p>Online Classes</p>
+                <p>Classes</p>
               </Link>
             </li>
             <li>
