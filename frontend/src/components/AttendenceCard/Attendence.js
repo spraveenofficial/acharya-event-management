@@ -1,8 +1,21 @@
 import Styles from "./Attendence.module.css";
 import Progress from "../ProgressBar/Progress";
-const Attendence = ({ subjectName, totalClasses, attendedClasses, bg, percentage }) => {
+import { motion } from "framer-motion";
+const Attendence = ({
+  subjectName,
+  totalClasses,
+  attendedClasses,
+  bg,
+  percentage,
+}) => {
   return (
-    <div className={Styles.attendence}>
+    <motion.div
+      whileHover={{
+        scale: 1.1,
+        transition: { duration: 2 },
+      }}
+      className={Styles.attendence}
+    >
       <div style={{ background: bg }} className={Styles.first}>
         <p>{subjectName}</p>
       </div>
@@ -19,7 +32,7 @@ const Attendence = ({ subjectName, totalClasses, attendedClasses, bg, percentage
       <div className={Styles.third}>
         <Progress percentage={percentage} />
       </div>
-    </div>
+    </motion.div>
   );
 };
 

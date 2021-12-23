@@ -6,11 +6,11 @@
   overflow: hidden;
   margin: 10px 0px;
   position: relative;
-  animation: mymove 3s;
-  animation-fill-mode: forwards;
+  /* animation: mymove 3s; */
+  /* animation-fill-mode: forwards; */
   cursor: pointer;
   position: relative;
-  transition: 0.3s ease-out;
+  /* transition: 0.3s ease-out; */
 }
 
 .class:hover {

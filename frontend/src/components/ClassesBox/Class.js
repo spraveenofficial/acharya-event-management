@@ -1,8 +1,25 @@
 import Styles from "./Class.module.css";
-
+import { motion } from "framer-motion";
 const Classes = ({ subjectName, time, date, bg }) => {
+  const socialVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        duration: 0.2,
+        type: "tween",
+        staggerChildren: 0.2,
+      },
+    },
+  };
   return (
-    <div className={Styles.class}>
+    <motion.div
+      className={Styles.class}
+      whileHover={{
+        scale: 1.1,
+        transition: { duration: 2 },
+      }}
+    >
       <div style={{ background: bg }} className={Styles.first}>
         <p>{subjectName}</p>
       </div>
@@ -13,7 +30,7 @@ const Classes = ({ subjectName, time, date, bg }) => {
         {/* <Progress percentage={percentage} /> */}
         <p>{date}</p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

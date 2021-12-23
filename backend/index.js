@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, "views")));
 // });
 
 app.use("/welcome", (req, res) => {
-  res.render("index.ejs");
+  res.render("welcome.ejs");
 });
 
 app.listen(PORT, (req, res) => {
