@@ -22,7 +22,7 @@ class sendLoginAlert {
   }
   async sendLoginAlert(name, email) {
     const subject = "Login Alert ⚠️ !";
-    const message = await ejs.renderFile("views/index.ejs", {
+    const message = await ejs.renderFile("views/welcome.ejs", {
       name: name,
     });
     this.sendMail(email, message, subject);

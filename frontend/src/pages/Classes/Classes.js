@@ -36,7 +36,7 @@ const Classes = () => {
                   );
                 })}
               </div>
-              <ClassesBox />
+              {/* <ClassesBox /> */}
             </div>
             <div className={Styles.online}>
               <h2>Online Classes</h2>

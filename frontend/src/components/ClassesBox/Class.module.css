@@ -68,8 +68,13 @@
   text-transform: capitalize;
   font-size: 40px !important;
 }
+
 @media (max-width: 767px) {
-  .class {
+  .new{
+    /* background: red; */
     width: 100% !important;
+  }
+  .class{
+    width: 100%;
   }
 }

@@ -46,7 +46,8 @@ const eventSchema = new mongoose.Schema({
     required: true,
   },
   organisedBy: {
-    type: String,
+    type: mogoose.Schema.Types.ObjectId,
+    ref: "Users",
     required: true,
   },
   noOfSlots: {
