@@ -17,10 +17,6 @@ const eventSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  slug: {
-    type: String,
-    required: true,
-  },
   joiningFee: {
     type: String,
     required: true,
@@ -47,7 +43,7 @@ const eventSchema = new mongoose.Schema({
   },
   organisedBy: {
     type: String,
-    required: true
+    required: true,
   },
   noOfSlots: {
     type: Number,

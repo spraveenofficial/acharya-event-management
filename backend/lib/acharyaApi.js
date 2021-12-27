@@ -4,6 +4,7 @@ const Event = require("../database/model/event");
 const newBooking = require("../database/model/eventBooked");
 const Auth = require("../services/auth");
 const Mail = require("../services/mail");
+
 class Acharya {
   async erpLogin(req, res) {
     const auid = req.body.username;
@@ -173,7 +174,6 @@ class Acharya {
       category,
       description,
       venue,
-      slug,
       joiningFee,
       thumbnail,
       startDate,
@@ -188,7 +188,6 @@ class Acharya {
       category,
       description,
       venue,
-      slug,
       joiningFee,
       thumbnail,
       startDate,
@@ -235,30 +234,37 @@ class Acharya {
   async bookEvent(req, res) {
     const { eventId, auid, studentName, phoneNumber, email, paymentMode } =
       req.body;
-    await Event.find({ id: eventId }).then((res) => {
-      console.log(res);
-    });
-    const booking = new newBooking({
-      eventId,
-      auid,
-      studentName,
-      phoneNumber,
-      email,
-      paymentMode,
-    });
-    await booking
-      .save()
-      .then((response) => {
-        return res.json({
-          success: true,
-          message: "Successfully Booked Event",
+    await Event.findById(eventId)
+      .then(async (response) => {
+        const booking = new newBooking({
+          eventId,
+          bookingId: Math.floor(new Date().valueOf() * Math.random()),
+          auid,
+          studentName,
+          phoneNumber,
+          email,
+          paymentMode,
         });
+        await booking
+          .save()
+          .then((response) => {
+            return res.json({
+              success: true,
+              message: "Successfully Booked Event",
+            });
+          })
+          .catch((err) => {
+            console.log(err);
+            return res.json({
+              success: false,
+              message: "Error while booking event",
+            });
+          });
       })
       .catch((err) => {
-        console.log(err);
         return res.json({
           success: false,
-          message: "Error while booking event",
+          message: "Invalid set of parameters",
         });
       });
   }

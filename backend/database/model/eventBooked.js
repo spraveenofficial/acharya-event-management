@@ -6,6 +6,10 @@ const bookedSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    bookingId: {
+      type: String,
+      required: true,
+    },
     auid: {
       type: String,
       required: true,
@@ -32,4 +36,4 @@ const bookedSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("EventBooked", bookedSchema);
+module.exports = mongoose.model("bookings", bookedSchema);
