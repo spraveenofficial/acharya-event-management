@@ -1,6 +1,7 @@
 const axios = require("axios");
 const User = require("../database/model/users");
 const Event = require("../database/model/event");
+const newBooking = require("../database/model/eventBooked");
 const Auth = require("../services/auth");
 const Mail = require("../services/mail");
 class Acharya {
@@ -152,8 +153,8 @@ class Acharya {
       },
     })
       .then((response) => {
-      //   console.log(response.data.data.length);
-      //   console.log(response.data.data[todayDate - 1]);
+        //   console.log(response.data.data.length);
+        //   console.log(response.data.data[todayDate - 1]);
         return res.json({
           success: true,
           classes: response.data.data[todayDate - 1],
@@ -230,6 +231,36 @@ class Acharya {
         data: response,
       });
     });
+  }
+  async bookEvent(req, res) {
+    const { eventId, auid, studentName, phoneNumber, email, paymentMode } =
+      req.body;
+    await Event.find({ id: eventId }).then((res) => {
+      console.log(res);
+    });
+    const booking = new newBooking({
+      eventId,
+      auid,
+      studentName,
+      phoneNumber,
+      email,
+      paymentMode,
+    });
+    await booking
+      .save()
+      .then((response) => {
+        return res.json({
+          success: true,
+          message: "Successfully Booked Event",
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.json({
+          success: false,
+          message: "Error while booking event",
+        });
+      });
   }
 }
 
