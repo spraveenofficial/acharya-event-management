@@ -98,7 +98,7 @@ const Login = () => {
             <label>Enter AUID*</label>
             {auidError.length > 2 ? <>{auidError}</> : ""}
             <Input
-              name="Enter your AUID"
+              placeholder="Enter your AUID"
               width="350px"
               onChange={(e) => setAuid(e.target.value)}
               error={auidError}
@@ -108,7 +108,7 @@ const Login = () => {
           <>
             <label>Enter Password*</label>
             <Input
-              name="Enter your Password"
+              placeholder="Enter your Password"
               type="password"
               width="350px"
               onChange={(e) => setPassword(e.target.value)}

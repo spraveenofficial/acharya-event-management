@@ -25,8 +25,7 @@ class Acharya {
           });
         } else if (response.data.success === true) {
           const student = await new User({
-            username: auid,
-            password: password,
+            auid: auid,
           });
           student
             .save()
@@ -169,6 +168,7 @@ class Acharya {
       });
   }
   async addEvent(req, res) {
+    console.log(req.body);
     const {
       title,
       category,
@@ -217,7 +217,7 @@ class Acharya {
   }
   async isAdmin(req, res) {
     const { auid } = req.body;
-    await User.findOne({ username: auid }).then((response) => {
+    await User.findOne({ auid: auid }).then((response) => {
       return res.json(response);
     });
   }

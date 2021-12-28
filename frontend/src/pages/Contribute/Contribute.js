@@ -107,7 +107,7 @@ const ContributePage = () => {
                 <div className={Styles.form}>
                   <label>Enter Your Name*</label>
                   <Input
-                    name="Enter your Name"
+                    placeholder="Enter your Name"
                     type="text"
                     width="350px"
                     value={user.student_name}
@@ -117,7 +117,7 @@ const ContributePage = () => {
                   />
                   <label>Enter Your AUID*</label>
                   <Input
-                    name="Enter your Name"
+                    placeholder="Enter your Name"
                     type="text"
                     width="350px"
                     value={user.auid}
@@ -127,7 +127,7 @@ const ContributePage = () => {
                   />
                   <label>Enter Your Course Name*</label>
                   <Input
-                    name="Enter your Name"
+                    placeholder="Enter your Name"
                     type="text"
                     width="350px"
                     value={user.course}

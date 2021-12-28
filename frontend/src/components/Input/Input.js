@@ -2,13 +2,14 @@ import Styles from "./Input.module.css";
 
 const Input = ({
   width,
-  name,
+  placeholder,
   onChange,
   error,
   type,
   className,
   disabled,
   value,
+  name
 }) => {
   return (
     <div className={Styles.input}>
@@ -19,10 +20,11 @@ const Input = ({
         onChange={onChange}
         style={{ width: width }}
         type={type}
-        placeholder={name}
+        placeholder={placeholder}
         disabled={disabled}
         className={className}
         value={value}
+        name={name}
       />
     </div>
   );
