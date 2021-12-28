@@ -234,37 +234,71 @@ class Acharya {
   async bookEvent(req, res) {
     const { eventId, auid, studentName, phoneNumber, email, paymentMode } =
       req.body;
-    await Event.findById(eventId)
+    await User.findOne({ username: auid })
       .then(async (response) => {
-        const booking = new newBooking({
-          eventId,
-          bookingId: Math.floor(new Date().valueOf() * Math.random()),
-          auid,
-          studentName,
-          phoneNumber,
-          email,
-          paymentMode,
-        });
-        await booking
-          .save()
-          .then((response) => {
-            return res.json({
-              success: true,
-              message: "Successfully Booked Event",
-            });
-          })
-          .catch((err) => {
-            console.log(err);
-            return res.json({
-              success: false,
-              message: "Error while booking event",
-            });
+        if (response == null) {
+          return res.json({
+            success: false,
+            message: "Invalid set of parameters",
           });
+        } else {
+          await Event.findById(eventId).then(async (response) => {
+            console.log(response.id);
+            await newBooking
+              .find({ eventId: eventId })
+              .then(async (response) => {
+                console.log(response);
+                if (response[0].auid === auid) {
+                  return res.json({
+                    success: false,
+                    message: "You have already booked this event",
+                  });
+                } else {
+                  const booking = new newBooking({
+                    eventId,
+                    bookingId: Math.floor(new Date().valueOf() * Math.random()),
+                    auid,
+                    studentName,
+                    phoneNumber,
+                    email,
+                    paymentMode,
+                  });
+                  await booking.save().then((response) => {
+                    return res.json({
+                      success: true,
+                      message: "Successfully Booked Event",
+                    });
+                  });
+                }
+              })
+              .catch((err) => {
+                console.log(err);
+                return res.json({
+                  success: false,
+                  message: "Invalid set of parameters",
+                });
+              });
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        return res.json({
+          success: false,
+          message: "Invalid set of parameters",
+        });
+      });
+  }
+  async eachEvent(req, res) {
+    const eventId = req.params.eventId;
+    await Event.findById(eventId)
+      .then((response) => {
+        return res.json(response);
       })
       .catch((err) => {
         return res.json({
           success: false,
-          message: "Invalid set of parameters",
+          message: "Unable to find.",
         });
       });
   }

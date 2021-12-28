@@ -96,6 +96,10 @@ const CreateEvent = () => {
                   <label>Enter Event Date *</label>
                   <input className={Styles.dateinput} type="date" />
                 </div>
+                <div className={Styles.dates}>
+                  <label>Enter Event Time *</label>
+                  <input className={Styles.dateinput} type="time" />
+                </div>
               </div>
             </div>
           </div>

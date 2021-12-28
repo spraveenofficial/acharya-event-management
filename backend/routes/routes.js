@@ -9,6 +9,7 @@ Router.post("/add-event", Acharya.addEvent);
 Router.post("/contribute", Features.registerForContribution);
 Router.get("/events", Acharya.getEvents);
 Router.post("/events", Acharya.bookEvent);
+Router.get("/event/:eventId", Acharya.eachEvent)
 Router.post("/isadmin", Acharya.isAdmin);
 Router.post("/onlineclass", Acharya.onlineClasses);
 Router.post("/offlineclass", Acharya.offlineClasses);

@@ -1,8 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import Styles from "./Event.module.css";
 
-const Event = ({ name, organisedBy, date, duration, category }) => {
+const Event = ({ eventId, name, organisedBy, date, duration, category }) => {
+  const navigate = useNavigate();
+
+  const Navigate = () => {
+    navigate(`/event/${eventId}`);
+  };
   return (
-    <section className="cards">
+    <section onClick={Navigate} className="cards">
       <article className="card card--1">
         <div className="card__info-hover">
           <svg className="card__like" viewBox="0 0 24 24">

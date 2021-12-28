@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 const Events = () => {
   const navigate = useNavigate();
-  const [loading, isLoading] = useState(false)
+  const [loading, isLoading] = useState(false);
   const [event, setEvent] = useState([]);
   const { user } = useSelector((state) => state.auth);
   const { isAdmin, isSuperUser } = useSelector((state) => state.adminData);
@@ -64,6 +64,7 @@ const Events = () => {
                   category={res.category}
                   name={res.title}
                   date={res.eventDate}
+                  eventId={res._id}
                 />
                 // </Link>
               );

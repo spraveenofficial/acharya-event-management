@@ -11,6 +11,7 @@ import About from "./pages/About/About";
 import Contribute from "./pages/Contribute/Contribute";
 import AddEvent from "./pages/CreateEvent/CreateEvent";
 import Developer from "./pages/Developer/Developer";
+import EachEvent from './pages/EventPage/Event'
 import store from "./store";
 import { getUser, loadUser } from "./actions/auth";
 import { useEffect } from "react";
@@ -46,6 +47,7 @@ function App() {
             <Route path="/about" element={<About />} />
             <Route path="/contribute" element={<Contribute />} />
             <Route path="/developer" element={<Developer />} />
+            <Route path="/event/:id" element={<EachEvent />} />
           </Route>
           <Route element={<AdminRoute />}>
             <Route path="/addevent" element={<AddEvent />} />
