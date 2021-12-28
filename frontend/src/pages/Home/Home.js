@@ -9,6 +9,7 @@ import EventBox from "../../components/EventBox/Event";
 import Navbar from "../../components/Navbar/Navbar";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import Hero from "../../components/Hero/Hero";
 const Home = () => {
   const { user } = useSelector((state) => state.auth);
   var today = new Date();
@@ -63,6 +64,7 @@ const Home = () => {
               ? "Good Afternoon"
               : "Good Evening"}
           </h2>
+              <Hero />
           {attendence.data ? <Attendence /> : "loading"}
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto

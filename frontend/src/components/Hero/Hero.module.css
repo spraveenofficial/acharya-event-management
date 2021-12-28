@@ -1,0 +1,116 @@
+.div {
+  background: #5c258d; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #5c258d,
+    #4389a2
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #5c258d, #4389a2);
+  height: 400px;
+  border-radius: 10px;
+  padding: 20px;
+  color: #ffff !important;
+  display: flex;
+  margin-top: 10px;
+}
+
+.left,
+.right {
+  width: 50%;
+  color: #ffff !important;
+}
+
+.left {
+  /* background: green; */
+  height: 100%;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right{
+    /* background: red; */
+    overflow: hidden;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.roller {
+  height: 4.125rem;
+  line-height: 4rem;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffff;
+  font-size: 20px;
+}
+
+#sparetime {
+  font-size: 1rem;
+  font-style: italic;
+  letter-spacing: 1rem;
+  margin-top: 0;
+  color: #a8dadc;
+}
+
+.roller #rolltext {
+  position: absolute;
+  top: 0;
+  animation: slide 8s infinite;
+}
+
+@keyframes slide {
+  0% {
+    top: 0;
+  }
+  25% {
+    top: -4rem;
+  }
+  50% {
+    top: -8rem;
+  }
+  72.5% {
+    top: -12.25rem;
+  }
+}
+.logo{
+    width: 450px;
+    overflow: hidden;
+}
+@media screen and (max-width: 600px) {
+
+  .roller {
+    height: 2.6rem;
+    line-height: 2.125rem;
+  }
+
+  #sparetime {
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+  }
+
+  .roller #rolltext {
+    animation: slide-mob 5s infinite;
+  }
+
+  @keyframes slide-mob {
+    0% {
+      top: 0;
+    }
+    25% {
+      top: -2.125rem;
+    }
+    50% {
+      top: -4.25rem;
+    }
+    72.5% {
+      top: -6.375rem;
+    }
+  }
+}

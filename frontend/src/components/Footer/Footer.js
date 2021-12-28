@@ -14,7 +14,7 @@ const Footer = () => {
         </div>
         <div className={Styles.col}>
           <h3>
-            Quick Links
+            Overview
             <div className={Styles.underline}>
               <span></span>
             </div>
@@ -28,23 +28,32 @@ const Footer = () => {
           <Link to="/help">
             <p>Help</p>
           </Link>
-          <Link to="/events">
-            <p>Events</p>
+          <Link to="/contribute">
+            <p>Wants to Contribute?</p>
           </Link>
         </div>
         <div className={Styles.col}>
           <h3>
-            Developers
+            Quick Links
             <div className={Styles.underline}>
               <span></span>
             </div>
           </h3>
-          <Link to="/developer">
-            <p>Praveen Kumar Singh</p>
+          <Link to="/events">
+            <p>Events</p>
           </Link>
-          <Link to="/developer">
+          <Link to="/profile">
+            <p>Profile</p>
+          </Link>
+          <Link to="/attendence">
+            <p>Attendence</p>
+          </Link>
+          <Link to="/classes">
+            <p>Classes</p>
+          </Link>
+          {/* <Link to="/developer">
             <p>Mohit Kumar</p>
-          </Link>
+          </Link> */}
         </div>
         <div className={Styles.col}>
           <h3>

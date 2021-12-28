@@ -9,13 +9,7 @@ import axios from "axios";
 import Loader from "../../components/LoaderPage/Loader";
 import { useEffect, useState } from "react";
 import eventImage from "../../images/event.jpg";
-import {
-  Clock,
-  CurrencyInr,
-  FireSimple,
-  Globe,
-  MapPin,
-} from "phosphor-react";
+import { Clock, CurrencyInr, FireSimple, Globe, MapPin } from "phosphor-react";
 const Event = () => {
   const [event, setEvent] = useState("");
   const { id } = useParams();
@@ -42,7 +36,8 @@ const Event = () => {
             <div className={Styles.right}>
               <img src={eventImage} alt="" />
               <div className={Styles.description}>
-                <p>This is game rule</p>
+                <h2>Description</h2>
+                <p>{event.description}</p>
               </div>
             </div>
             <div className={Styles.left}>
@@ -70,7 +65,8 @@ const Event = () => {
                 </div>
                 <div className={Styles.rate}>
                   <div className={Styles.rates}>
-                    <CurrencyInr weight="bold" size={28} /> <h2>{event.joiningFee}</h2>
+                    <CurrencyInr weight="bold" size={28} />{" "}
+                    <h2>{event.joiningFee}</h2>
                   </div>
                   <div className={Styles.btn}>
                     <Button text="Book Now" />
