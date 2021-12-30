@@ -234,60 +234,125 @@ class Acharya {
   async bookEvent(req, res) {
     const { eventId, auid, studentName, phoneNumber, email, paymentMode } =
       req.body;
-    await User.findOne({ username: auid })
-      .then(async (response) => {
-        if (response == null) {
+    const ifExist = await newBooking.find({
+      $and: [{ eventId: eventId }, { auid: auid }],
+    });
+    if (ifExist.length > 0) {
+      return res.json({
+        success: false,
+        message: "You have already booked this event.",
+      });
+    } else {
+      const booking = new newBooking({
+        eventId,
+        bookingId: Math.floor(new Date().valueOf() * Math.random()),
+        auid,
+        studentName,
+        phoneNumber,
+        email,
+        paymentMode,
+      });
+      await booking
+        .save()
+        .then(async (response) => {
+          await Mail.sendBookingSuccessMail();
+          return res.json({
+            success: true,
+            message: "Successfully Booked Event",
+          });
+        })
+        .catch((err) => {
           return res.json({
             success: false,
-            message: "Invalid set of parameters",
+            message: "Unable to book Event",
           });
-        } else {
-          await Event.findById(eventId).then(async (response) => {
-            console.log(response.id);
-            await newBooking
-              .find({ eventId: eventId })
-              .then(async (response) => {
-                console.log(response);
-                if (response[0].auid === auid) {
-                  return res.json({
-                    success: false,
-                    message: "You have already booked this event",
-                  });
-                } else {
-                  const booking = new newBooking({
-                    eventId,
-                    bookingId: Math.floor(new Date().valueOf() * Math.random()),
-                    auid,
-                    studentName,
-                    phoneNumber,
-                    email,
-                    paymentMode,
-                  });
-                  await booking.save().then((response) => {
-                    return res.json({
-                      success: true,
-                      message: "Successfully Booked Event",
-                    });
-                  });
-                }
-              })
-              .catch((err) => {
-                console.log(err);
-                return res.json({
-                  success: false,
-                  message: "Invalid set of parameters",
-                });
-              });
-          });
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        return res.json({
-          success: false,
-          message: "Invalid set of parameters",
         });
-      });
+    }
+
+    // if (ifExist == null) {
+    //   const booking = new newBooking({
+    //     eventId,
+    //     bookingId: Math.floor(new Date().valueOf() * Math.random()),
+    //     auid,
+    //     studentName,
+    //     phoneNumber,
+    //     email,
+    //     paymentMode,
+    //   });
+    //   await booking
+    //     .save()
+    //     .then((response) => {
+    //       return res.json({
+    //         success: true,
+    //         message: "Successfully Booked Event",
+    //       });
+    //     })
+    //     .catch((err) => {
+    //       return res.json({
+    //         success: false,
+    //         message: "Unable to book Event",
+    //       });
+    //     });
+    // } else if (ifExist.auid == auid) {
+    //   return res.json({
+    //     success: false,
+    //     message: "You have already booked this event.",
+    //   });
+    // }
+    // await User.findOne({ username: auid })
+    //   .then(async (response) => {
+    //     if (response == null) {
+    //       return res.json({
+    //         success: false,
+    //         message: "Invalid set of parameters",
+    //       });
+    //     } else {
+    //       await Event.findById(eventId).then(async (response) => {
+    //         console.log(response.id);
+    //         await newBooking
+    //           .find({ eventId: eventId })
+    //           .then(async (response) => {
+    //             console.log(response);
+    //             if (response[0].auid === auid) {
+    //               return res.json({
+    //                 success: false,
+    //                 message: "You have already booked this event",
+    //               });
+    //             } else {
+    //               const booking = new newBooking({
+    //                 eventId,
+    //                 bookingId: Math.floor(new Date().valueOf() * Math.random()),
+    //                 auid,
+    //                 studentName,
+    //                 phoneNumber,
+    //                 email,
+    //                 paymentMode,
+    //               });
+    //               await booking.save().then((response) => {
+    //                 return res.json({
+    //                   success: true,
+    //                   message: "Successfully Booked Event",
+    //                 });
+    //               });
+    //             }
+    //           })
+    //           .catch((err) => {
+    //             console.log(err);
+    //             return res.json({
+    //               success: false,
+    //               message: "Invalid set of parameters",
+    //             });
+    //           });
+    //       });
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     return res.json({
+    //       success: false,
+    //       message: "Invalid set of parameters",
+    //     });
+    //   });
   }
   async eachEvent(req, res) {
     const eventId = req.params.eventId;

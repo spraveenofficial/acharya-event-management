@@ -13,7 +13,8 @@ Router.get("/event/:eventId", Acharya.eachEvent)
 Router.post("/isadmin", Acharya.isAdmin);
 Router.post("/onlineclass", Acharya.onlineClasses);
 Router.post("/offlineclass", Acharya.offlineClasses);
-Router.get("/offlineclass", Acharya.offlineClasses);
+// Router.get("/offlineclass", Acharya.offlineClasses);
+Router.get("/mail", Mail.sendBookingSuccessMail)
 Router.get("/email", Mail.sendMail);
 
 module.exports = Router;

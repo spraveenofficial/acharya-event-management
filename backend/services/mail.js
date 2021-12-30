@@ -1,6 +1,6 @@
 var nodemailer = require("nodemailer");
 const axios = require("axios");
-
+const qr = require("qrcode");
 var ejs = require("ejs");
 class sendLoginAlert {
   constructor() {
@@ -27,6 +27,20 @@ class sendLoginAlert {
     });
     this.sendMail(email, message, subject);
   }
+  async sendContributionMail(email) {
+    const subject = "Thanks for applying ! ⚠️";
+    const message = `<p>Thanks for applying.<br><br>Regards,<br>Praveen Kumar Singh.</p>`;
+    this.sendMail(email, message, subject);
+  }
+  async sendBookingSuccessMail() {
+    const subject = "Thanks for booking Event";
+    const qrCode = await qr.toDataURL("okbye");
+    console.log(qrCode)
+    const message = await ejs.renderFile("views/event.ejs", {
+      qr: qrCode,
+    });
+    this.sendMail("spraveen593@gmail.com", message, subject);
+  }
   async sendMail(email, message, subject) {
     var transporter = nodemailer.createTransport({
       service: "gmail",
@@ -48,12 +62,6 @@ class sendLoginAlert {
       else console.log("mail sent");
     });
   }
-  async sendContributionMail(email) {
-    const subject = "Thanks for applying ! ⚠️";
-    const message = `<p>Thanks for applying.<br><br>Regards,<br>Praveen Kumar Singh.</p>`;
-    this.sendMail(email, message, subject);
-  }
-  async sendBookingSuccessMail(email) {}
 }
 
 module.exports = new sendLoginAlert();
