@@ -7,11 +7,12 @@ import { useEffect, useState } from "react";
 import EventBox from "../../components/EventBox/Event";
 import Navbar from "../../components/Navbar/Navbar";
 import axios from "axios";
+import { baseUrl } from "../../Baseurl";
 const Dashboard = () => {
   const [studentData, setstudentData] = useState([]);
   const getUserData = async () => {
     await axios({
-      url: "/dashboard",
+      url: `${baseUrl}/dashboard`,
       method: "POST",
       headers: {
         token: localStorage.getItem("erpToken"),
@@ -52,7 +53,7 @@ const Dashboard = () => {
         <div className={Styles.navbar}>
           <h2>Welcome, Praveen Kumar Singh. Good Evening</h2>
           {/* <h1>{studendData}</h1> */}
-          <Attendence/>
+          <Attendence />
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto
             ut est, voluptatibus aperiam et corrupti officiis rem pariatur rerum

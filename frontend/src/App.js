@@ -11,12 +11,13 @@ import About from "./pages/About/About";
 import Contribute from "./pages/Contribute/Contribute";
 import AddEvent from "./pages/CreateEvent/CreateEvent";
 import Developer from "./pages/Developer/Developer";
-import EachEvent from './pages/EventPage/Event'
+import EachEvent from "./pages/EventPage/Event";
 import store from "./store";
 import { getUser, loadUser } from "./actions/auth";
 import { useEffect } from "react";
 import { ProtectedRoutes, GuestRoutes, AdminRoute } from "./ProtectedRoute";
 import { useSelector } from "react-redux";
+require("dotenv").config();
 
 function App() {
   const { loading } = useSelector((state) => state.auth);

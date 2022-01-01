@@ -9,6 +9,7 @@ import { loadUser } from "../../actions/auth";
 import Toast from "../../components/Toast/Toast";
 // import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { baseUrl } from "../../Baseurl";
 const Login = () => {
   const navigate = useNavigate();
   // const dispatch = useDispatch();
@@ -35,7 +36,7 @@ const Login = () => {
   };
   const loginStudent = async () => {
     await axios({
-      url: "/login",
+      url: `${baseUrl}/login`,
       method: "POST",
       data: {
         username: auid,

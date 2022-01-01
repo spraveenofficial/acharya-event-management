@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import Toast from "../../components/Toast/Toast";
+import { baseUrl } from "../../Baseurl";
 const CreateEvent = () => {
   const { user } = useSelector((state) => state.auth);
   const [status, setStatus] = useState(false);
@@ -36,7 +37,7 @@ const CreateEvent = () => {
   };
   const addEventFunc = async () => {
     await axios({
-      url: "/add-event",
+      url: `${baseUrl}/add-event`,
       method: "POST",
       data: {
         title: inputItem.title,

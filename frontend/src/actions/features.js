@@ -1,13 +1,13 @@
 import { LOAD_SUPERUSER, LOAD_ADMIN, NORMAL_USER } from "../actions/types";
 import axios from "axios";
-
+import { baseUrl } from "../Baseurl";
 
 export const loadAdmin = (auid) => async (dispatch) => {
   const token = localStorage.getItem("erpToken");
   try {
     const res = await axios({
       method: "POST",
-      url: "/isAdmin",
+      url: `${baseUrl}/isAdmin`,
       headers: {
         token: token,
       },

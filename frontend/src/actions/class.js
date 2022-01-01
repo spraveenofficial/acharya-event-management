@@ -6,6 +6,7 @@ import {
 } from "./types";
 
 import axios from "axios";
+import { baseUrl } from "../Baseurl";
 
 export const loadOnlineClass = (auid) => async (dispatch) => {
   const token = localStorage.getItem("aliveToken");
@@ -13,7 +14,7 @@ export const loadOnlineClass = (auid) => async (dispatch) => {
   try {
     const res = await axios({
       method: "POST",
-      url: "/onlineclass",
+      url: `${baseUrl}/onlineclass`,
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -42,7 +43,7 @@ export const loadOfflineClass = () => async (dispatch) => {
   console.log(token);
   await axios({
     method: "POST",
-    url: "/offlineclass",
+    url: `${baseUrl}/offlineclass`,
     headers: {
       token: token,
     },

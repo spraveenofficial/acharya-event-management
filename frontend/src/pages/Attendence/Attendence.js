@@ -18,7 +18,7 @@ const Attendence = () => {
   useEffect(() => {
     const getAttendence = async () => {
       await axios({
-        url: "/attendence",
+        url: `${baseUrl}/attendence`,
         method: "GET",
         headers: {
           token: localStorage.getItem("erpToken"),

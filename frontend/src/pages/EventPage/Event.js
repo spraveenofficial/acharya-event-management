@@ -10,12 +10,13 @@ import Loader from "../../components/LoaderPage/Loader";
 import { useEffect, useState } from "react";
 import eventImage from "../../images/event.jpg";
 import { Clock, CurrencyInr, FireSimple, Globe, MapPin } from "phosphor-react";
+import { baseUrl } from "../../Baseurl";
 const Event = () => {
   const [event, setEvent] = useState("");
   const { id } = useParams();
   const fetchEvent = async () => {
     await axios({
-      url: `${id}`,
+      url: `${baseUrl}/event/${id}`,
       method: "GET",
     }).then((res) => {
       if (res.success == false) {

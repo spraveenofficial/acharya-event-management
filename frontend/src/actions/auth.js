@@ -1,15 +1,13 @@
 import axios from "axios";
 import { SET_AUTH, REMOVE_AUTH, LOAD_USER } from "./types";
-
+import { baseUrl } from "../Baseurl";
+// console.log(baseUrl);
 export const loadUser = () => async (dispatch) => {
-  // dispatch({
-  //   type: LOAD_USER,
-  // });
   const token = localStorage.getItem("erpToken");
   try {
     const res = await axios({
       method: "POST",
-      url: "/dashboard",
+      url: `${baseUrl}/dashboard`,
       headers: {
         token: token,
       },

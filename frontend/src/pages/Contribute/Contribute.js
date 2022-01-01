@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { useState } from "react";
 import Toast from "../../components/Toast/Toast";
 import axios from "axios";
+import { baseUrl } from "../../Baseurl";
 const ContributePage = () => {
   const [submitStatus, setSubmitStatus] = useState(false);
   const [response, setResponse] = useState("");
@@ -33,7 +34,7 @@ const ContributePage = () => {
   };
   const submitForm = async () => {
     await axios({
-      url: "/contribute",
+      url: `${baseUrl}/contribute`,
       method: "POST",
       headers: {
         token: localStorage.getItem("erpToken"),
