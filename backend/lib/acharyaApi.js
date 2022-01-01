@@ -4,7 +4,7 @@ const Event = require("../database/model/event");
 const newBooking = require("../database/model/eventBooked");
 const Auth = require("../services/auth");
 const Mail = require("../services/mail");
-
+const encrypt = require ("../encryption/index")
 class Acharya {
   async erpLogin(req, res) {
     const auid = req.body.username;

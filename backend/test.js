@@ -53,6 +53,75 @@
 
 // getData();
 
-const { v4: uuidv4  } = require("uuid");
+// const { v4: uuidv4  } = require("uuid");
 
-console.log(uuidv4());
+// console.log(uuidv4());
+// const crypto = require("crypto");
+// const sha256 = (data) => {
+//   return crypto.createHash("sha256").update(data).digest("hex");
+// };
+
+// const data = sha256("Dataidhaindnndfw");
+
+// console.log(data);
+
+// const crypto = require("crypto");
+// const algorithm = "aes-256-cbc"; //Using AES encryption
+// const key = crypto.randomBytes(32);
+// const iv = crypto.randomBytes(16);
+
+// //Encrypting text
+// function encrypt(text) {
+//   let cipher = crypto.createCipheriv("aes-256-cbc", Buffer.from(key), iv);
+//   let encrypted = cipher.update(text);
+//   encrypted = Buffer.concat([encrypted, cipher.final()]);
+//   return { iv: iv.toString("hex"), encryptedData: encrypted.toString("hex") };
+// }
+
+// // Decrypting text
+// function decrypt(text) {
+//   let iv = Buffer.from(text.iv, "hex");
+//   let encryptedText = Buffer.from(text.encryptedData, "hex");
+//   let decipher = crypto.createDecipheriv("aes-256-cbc", Buffer.from(key), iv);
+//   let decrypted = decipher.update(encryptedText);
+//   decrypted = Buffer.concat([decrypted, decipher.final()]);
+//   return decrypted.toString();
+// }
+
+// // Text send to encrypt function
+// var hw = encrypt("Praveen Kumar Singh");
+// console.log(hw.encryptedData);
+// console.log(decrypt(hw));
+
+// const crypto = require('crypto');
+
+// const algorithm = 'aes-256-ctr';
+// const secretKey = 'vOVH6sdmpNWjRRIqCc7rdxs01lwHzfr3';
+// const iv = crypto.randomBytes(16);
+
+// const encrypt = (text) => {
+
+//     const cipher = crypto.createCipheriv(algorithm, secretKey, iv);
+
+//     const encrypted = Buffer.concat([cipher.update(text), cipher.final()]);
+
+//     return {
+//         iv: iv.toString('hex'),
+//         content: encrypted.toString('hex')
+//     };
+// };
+
+// const decrypt = (hash) => {
+
+//     const decipher = crypto.createDecipheriv(algorithm, secretKey, Buffer.from(hash.iv, 'hex'));
+
+//     const decrpyted = Buffer.concat([decipher.update(Buffer.from(hash.content, 'hex')), decipher.final()]);
+
+//     return decrpyted.toString();
+// };
+
+// const data  = encrypt("Praveen Kumar Singh");
+// console.log(data);
+
+// const exactData = decrypt(data);
+// console.log(exactData)
