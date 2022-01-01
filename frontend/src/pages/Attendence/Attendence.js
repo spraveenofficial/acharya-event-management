@@ -7,6 +7,7 @@ import AttendenceBox from "../../components/AttendenceCard/Attendence";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Loader from "../../components/LoaderPage/Loader";
+import { baseUrl } from "../../Baseurl";
 const Attendence = () => {
   const [attendence, setAttendence] = useState([]);
   // const randomColors = ["C615F4", "", "blue", "#11D920", "#ff33ff"];
