@@ -32,6 +32,6 @@ app.use("/event", (req, res) => {
   });
 });
 
-app.listen(PORT, (req, res) => {
-  console.log(`Listening on port ${PORT}`);
+app.listen(443, (req, res) => {
+  console.log(`Listening on port 443`);
 });
