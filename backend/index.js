@@ -10,17 +10,25 @@ const cors = require("cors");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use("/api", require("./routes/routes"));
-
+app.use(
+  cors({
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+    credentials: true,
+  })
+);
 app.use(express.static("views"));
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "views")));
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "");
-  res.setHeader("Access-Control-Allow-Headers", "*");
-  res.header("Access-Control-Allow-Credentials", true);
-  next();
-});
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "");
+//   res.setHeader("Access-Control-Allow-Headers", "*");
+//   res.header("Access-Control-Allow-Credentials", true);
+//   next();
+// });
 
 app.use("/event", (req, res) => {
   qr.toDataURL("okbye", (err, src) => {
