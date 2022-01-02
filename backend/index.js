@@ -9,7 +9,6 @@ const qr = require("qrcode");
 const cors = require("cors");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use("/api", require("./routes/routes"));
 // app.use(
 //   cors({
 //     origin: "*",
@@ -32,6 +31,7 @@ app.use(function (req, res, next) {
   );
   next();
 });
+app.use("/api", require("./routes/routes"));
 app.use("/event", (req, res) => {
   qr.toDataURL("okbye", (err, src) => {
     if (err) res.send("Error occured");
