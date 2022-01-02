@@ -12,6 +12,7 @@ import { loadAdmin } from "../../actions/features";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { baseUrl } from "../../Baseurl";
 const Events = () => {
   const navigate = useNavigate();
   const [loading, isLoading] = useState(false);
@@ -22,7 +23,7 @@ const Events = () => {
     store.dispatch(loadAdmin(user.auid));
     const fetchEvents = async () => {
       await axios({
-        url: "/events",
+        url: `${baseUrl}/events`,
         method: "GET",
       }).then((res) => {
         setEvent(res.data);
