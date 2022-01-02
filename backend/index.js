@@ -12,10 +12,15 @@ app.use(express.json());
 app.use("/api", require("./routes/routes"));
 app.use(
   cors({
-    origin: "https://main.d2xlx4fu5imths.amplifyapp.com",
+    origin: "*",
     credentials: true,
   })
 );
+
+app.use(function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
 app.use(express.static("views"));
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "views")));
