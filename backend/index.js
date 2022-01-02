@@ -10,28 +10,28 @@ const cors = require("cors");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use("/api", require("./routes/routes"));
-app.use(
-  cors({
-    origin: "*",
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "*",
+//     credentials: true,
+//   })
+// );
 
-app.use(function (req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  next();
-});
 app.use(express.static("views"));
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "views")));
 
-// app.use((req, res, next) => {
-//   res.setHeader("Access-Control-Allow-Origin", "");
-//   res.setHeader("Access-Control-Allow-Headers", "*");
-//   res.header("Access-Control-Allow-Credentials", true);
-//   next();
-// });
-
+app.use(function (req, res, next) {
+  res.header(
+    "Access-Control-Allow-Origin",
+    "https://main.d2xlx4fu5imths.amplifyapp.com"
+  ); // update to match the domain you will make the request from
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 app.use("/event", (req, res) => {
   qr.toDataURL("okbye", (err, src) => {
     if (err) res.send("Error occured");
