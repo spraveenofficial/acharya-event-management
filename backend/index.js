@@ -12,10 +12,7 @@ app.use(express.json());
 app.use("/api", require("./routes/routes"));
 app.use(
   cors({
-    origin: "*",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
+    origin: "https://main.d2xlx4fu5imths.amplifyapp.com",
     credentials: true,
   })
 );
