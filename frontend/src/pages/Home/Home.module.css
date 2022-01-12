@@ -12,6 +12,9 @@
 }
 
 @media (max-width: 767px) {
+  .navbar h2{
+    font-size: 15px;
+  }
   .cards {
     grid-template-columns: 1fr;
   }

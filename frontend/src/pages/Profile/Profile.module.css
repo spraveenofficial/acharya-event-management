@@ -1,9 +1,10 @@
 .profile{
-    background: rgb(246, 248, 255);
+    /* background: rgb(246, 248, 255); */
     height: 500px;
     margin: 0px 200px;
     padding: 20px 40px;
     border-radius: 20px;
+    background: red !important;
 }
 .user {
     width: 350px;

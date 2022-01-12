@@ -1,42 +1,40 @@
-.first {
+body {
+  --accent: #8855ff;
+  width: 100vw;
+  height: 100vh;
+  background: var(--accent);
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
   display: flex;
-}
-.left,
-.right {
-  width: 50%;
+  justify-content: center;
   align-items: center;
-  text-align: center;
 }
 
-.right {
-  /* background: red; */
-}
-
-.left img {
-  width: 200px;
-  /* border: 1px red; */
-}
-.left > .studentname {
-  /* align-items: center; */
+.window {
+  width: 480px;
+  height: 360px;
+  border-radius: 10px;
+  background: white;
+  overflow: hidden;
+  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075);
   display: flex;
   flex-direction: column;
-  justify-content: center;
 }
 
-.header {
+nav {
+  background: #fdfdfd;
   padding: 5px 5px 0;
   border-radius: 10px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
   border-bottom: 1px solid #eeeeee;
   height: 44px;
-  /* border: 1px solid black; */
 }
 
-.header ul {
-  display: flex;
-}
-.header ul li {
+.tabs {
   flex-grow: 1;
   display: flex;
   justify-content: flex-start;
@@ -53,8 +51,9 @@ main {
   flex-grow: 1;
   user-select: none;
 }
-.header ul,
-.header ul li {
+
+ul,
+li {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -63,7 +62,12 @@ main {
   font-size: 14px;
 }
 
-.header ul li {
+ul {
+  display: flex;
+  width: 100%;
+}
+
+li {
   border-radius: 5px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
@@ -82,10 +86,6 @@ main {
   user-select: none;
 }
 
-ul {
-  display: flex;
-  width: 100%;
-}
 .underline {
   position: absolute;
   bottom: -1px;
@@ -113,8 +113,28 @@ li button {
   cursor: pointer;
   flex-shrink: 0;
 }
-@media (max-width: 768px) {
-  .profile {
-    flex-direction: column;
-  }
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 300px;
+  background: #fff;
+}
+
+.add-item {
+  width: 30px;
+  height: 30px;
+  background: #eee;
+  border-radius: 50%;
+  border: 0;
+  cursor: pointer;
+  align-self: center;
+}
+
+.add-item:disabled {
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
 }
