@@ -5,36 +5,39 @@ import Footer from "../../components/Footer/Footer";
 import Navbar from "../../components/Navbar/Navbar";
 import Loader from "../../components/LoaderPage/Loader";
 import store from "../../store";
-import { loadOnlineClass, loadOfflineClass } from "../../actions/class";
+import { loadOfflineClass } from "../../actions/class";
 import { useEffect } from "react";
 import ClassesBox from "../../components/ClassesBox/Class";
 import { useSelector } from "react-redux";
 const Classes = () => {
-  const { onlineClass, offlineClass } = useSelector((state) => state.classes);
+  const { onlineClass, classes } = useSelector((state) => state.classes);
   useEffect(() => {
-    store.dispatch(loadOnlineClass());
+    // store.dispatch(loadOnlineClass());
     store.dispatch(loadOfflineClass());
   }, []);
   return (
     <Navbar>
       <Container>
-        {!offlineClass.success ? (
+        {classes === "" ? (
           <Loader />
         ) : (
           <>
             <div className={Styles.offline}>
               <h2>Offline Classes</h2>
               <div className={Styles.boxes}>
-                {offlineClass.classes.map((eachClasses) => {
-                  return (
-                    <ClassesBox
-                      bg="#1F2889"
-                      date={eachClasses.selected_date}
-                      subjectName={eachClasses.subject_name}
-                      time={eachClasses.interval}
-                    />
-                  );
-                })}
+                {console.log(classes)}
+                {classes === "No Classes"
+                  ? "Nop classe"
+                  : classes.map((eachClasses) => {
+                      return (
+                        <ClassesBox
+                          bg="#1F2889"
+                          date={eachClasses.selected_date}
+                          subjectName={eachClasses.subject_name}
+                          time={eachClasses.interval}
+                        />
+                      );
+                    })}
               </div>
               {/* <ClassesBox /> */}
             </div>

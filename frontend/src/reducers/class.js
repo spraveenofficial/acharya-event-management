@@ -6,17 +6,17 @@ import {
 } from "../actions/types";
 
 const initialState = {
-  onlineClass: "",
+  classes: "",
   offlineClass: "",
 };
 
-export default function (state = initialState, action) {
+export default function setAuth(state = initialState, action) {
   const { type, payload } = action;
   switch (type) {
     case LOAD_ONLINECLASS:
       return {
         ...state,
-        onlineClass: payload,
+        classes: payload,
       };
     case LOAD_OFFLINECLASS:
       return {
@@ -26,14 +26,13 @@ export default function (state = initialState, action) {
     case SETNO_ONLINECLASS:
       return {
         ...state,
-        onlineClass: "No classes",
+        classes: "No classes",
       };
     case SETNO_OFFLINECLASS:
       return {
         ...state,
-        onlineClass: "",
+        classes: "No Classes",
       };
-
     default:
       return state;
   }
