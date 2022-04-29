@@ -4,81 +4,80 @@ const Event = require("../database/model/event");
 const newBooking = require("../database/model/eventBooked");
 const Auth = require("../services/auth");
 const Mail = require("../services/mail");
-const encrypt = require ("../encryption/index")
+const encrypt = require("../encryption/index");
 class Acharya {
   async erpLogin(req, res) {
     const auid = req.body.username;
     const password = req.body.password;
-    await axios({
+    const { data } = await axios({
       url: process.env.ERP_LOGIN,
       method: "POST",
       data: {
         username: auid,
         password: password,
       },
-    })
-      .then(async (response) => {
-        if (response.data.success === false) {
-          return res.status(200).json({
-            success: false,
-            message: "Invalid AUID or password",
-          });
-        } else if (response.data.success === true) {
-          const student = await new User({
+    });
+    if (data.success === false) {
+      return res.json({
+        success: false,
+        message: "Invalid Credentials",
+      });
+    } else {
+      try {
+        const checkIFUserExist = await User.findOne({ auid: auid });
+        if (!checkIFUserExist) {
+          const student = new User({
             auid: auid,
           });
-          student
-            .save()
-            .then((res) => {
-              console.log("User Saved");
-            })
-            .catch((err) => {
-              console.log("Unable to save user");
-            });
-          const aliveToken = await Auth.aliveLogin(auid, password);
-          const sendLoginAlert = await Mail.getUserEmail(response.data.token);
-          return res.status(200).json({
-            success: true,
-            message: "Successfully Logged in",
-            token: response.data.token,
-            aliveToken: aliveToken,
-          });
+          student.save();
         }
-      })
-      .catch((err) => {
-        console.log(err);
-        return res.status(500).json(err);
-      });
+      } catch (error) {
+        console.log(error);
+      } finally {
+        const aliveToken = await Auth.aliveLogin(auid, password);
+        // const sendLoginAlert = await Mail.getUserEmail(data.token);
+        return res.status(200).json({
+          success: true,
+          message: "Successfully Logged in",
+          token: data.token,
+          aliveToken: aliveToken,
+        });
+      }
+    }
   }
   async studentProfile(req, res) {
-    await axios({
-      url: process.env.ERP_PROFILE,
-      method: "POST",
-      headers: {
-        token: req.headers.token,
-      },
-    })
-      .then((response) => {
-        if (response.data.success === false) {
-          return res.status(201).json({
-            success: false,
-            message: "Unable to retreive Student Information",
-          });
-        } else if (response.data.success === true) {
-          return res.status(200).json({
-            success: true,
-            message: "User data retreive successfully",
-            data: response.data,
-          });
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        return res.status(500).json({
-          success: false,
-          message: "Unable to get student information.",
-        });
+    try {
+      const { data } = await axios({
+        url: process.env.ERP_PROFILE,
+        method: "POST",
+        headers: {
+          token: req.headers.token,
+        },
       });
+      if (data.success === false) {
+        return res.status(201).json({
+          success: false,
+          message: "Unable to retreive Student Information",
+        });
+      } else {
+        const checkStatus = await User.findOne({ auid: data.data.auid });
+        return res.status(200).json({
+          success: true,
+          message: "User data retreive successfully",
+          data: {
+            ...data.data,
+            isAdmin: checkStatus.isAdmin,
+            isSuperUser: checkStatus.isSuperUser,
+          },
+        });
+      }
+    } catch (error) {
+      console.log(error);
+      return res.status(404).json({
+        success: false,
+        message: "Server Error",
+      });
+    }
   }
   async Attendence(req, res) {
     await axios({

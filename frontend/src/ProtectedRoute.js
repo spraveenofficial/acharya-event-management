@@ -12,7 +12,8 @@ export const GuestRoutes = () => {
 };
 
 export const AdminRoute = () => {
-  const { isAdmin, isSuperUser } = useSelector((state) => state.adminData);
-  return isAdmin || isSuperUser ? <Outlet/> : <Navigate to='/events' />;
-}
+  const { user } = useSelector((state) => state.auth);
+  const { isAdmin, isSuperUser } = user;
+  return isAdmin || isSuperUser ? <Outlet /> : <Navigate to="/events" />;
+};
 // export default ProtectedRoutes;

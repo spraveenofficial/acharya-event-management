@@ -7,7 +7,6 @@ import Loader from "../../components/LoaderPage/Loader";
 import EventCards from "../../components/EventBox/Event";
 import { useEffect, useState } from "react";
 import Button from "../../components/ColorButton/Button";
-import store from "../../store";
 import { loadAdmin } from "../../actions/features";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -18,9 +17,9 @@ const Events = () => {
   const [loading, isLoading] = useState(false);
   const [event, setEvent] = useState([]);
   const { user } = useSelector((state) => state.auth);
-  const { isAdmin, isSuperUser } = useSelector((state) => state.adminData);
+  const { isAdmin, isSuperUser } = user;
   useEffect(() => {
-    store.dispatch(loadAdmin(user.auid));
+    // store.dispatch(loadAdmin(user.auid));
     const fetchEvents = async () => {
       await axios({
         url: `${baseUrl}/events`,
@@ -32,7 +31,7 @@ const Events = () => {
     fetchEvents();
   }, []);
   const Loading = () => {
-    isLoading(true);
+    // isLoading(true);
     navigate("/addevent");
   };
   return (

@@ -5,7 +5,7 @@ import { baseUrl } from "../Baseurl";
 export const loadUser = () => async (dispatch) => {
   const token = localStorage.getItem("erpToken");
   try {
-    const res = await axios({
+    const { data } = await axios({
       method: "POST",
       url: `${baseUrl}/dashboard`,
       headers: {
@@ -14,7 +14,7 @@ export const loadUser = () => async (dispatch) => {
     });
     dispatch({
       type: SET_AUTH,
-      payload: res.data.data.data,
+      payload: data.data,
     });
   } catch (error) {
     dispatch({
